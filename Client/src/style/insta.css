@@ -1,0 +1,133 @@
+.container-insta {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.container-insta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+}
+
+.insta-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.insta-icon {
+    width: 80px;
+    height: 80px;
+    color: #ffffff;
+    flex-shrink: 0;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.insta-text {
+    flex: 1;
+}
+
+.insta-text h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 0.5rem 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.insta-text p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ffffff;
+    margin: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.insta-button {
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.insta-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 850px) {
+    .container-insta {
+        margin: 2rem auto;
+        padding: 2rem 1.5rem;
+        border-radius: 16px;
+    }
+    
+    .insta-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    
+    .insta-icon {
+        width: 64px;
+        height: 64px;
+    }
+    
+    .insta-text h3 {
+        font-size: 1.5rem;
+    }
+    
+    .insta-text p {
+        font-size: 1rem;
+    }
+    
+    .insta-button {
+        font-size: 1rem;
+        padding: 0.7rem 1.5rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .container-insta {
+        margin: 1.5rem 1rem;
+        padding: 1.5rem 1rem;
+    }
+    
+    .insta-icon {
+        width: 56px;
+        height: 56px;
+    }
+    
+    .insta-text h3 {
+        font-size: 1.3rem;
+    }
+}
