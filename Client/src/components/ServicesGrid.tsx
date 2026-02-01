@@ -1,7 +1,7 @@
 import '../style/service.css'
 import image1 from "../assets/images/tratamiento.jpeg"
 import image2 from "../assets/images/asesorias.jpeg"
-import image3 from "../assets/images/Formaciones.jpeg"
+import image3 from "../assets/images/formaciones.jpeg"
 // import image4 from "../assets/images/talleres.jpeg"
 import image5 from "../assets/images/programas.jpeg"
 import image6 from "../assets/images/piscoint.jpeg"
