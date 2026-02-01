@@ -2,6 +2,7 @@ import "../style/aboutMe.css"
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
+import image1 from "../../src/assets/images/sr4.jpeg"
 
 export const AboutMe = () => {
     const ref = useRef(null)
@@ -24,6 +25,16 @@ export const AboutMe = () => {
             >
                 <h2> SOBRE MÍ </h2>
             </motion.div>
+
+            <div className="img-sr">
+                <motion.img 
+                    src={image1} 
+                    alt="foto profesional"
+                    initial={{ opacity: 0, x: -80 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -80 }}
+                    transition={{ duration: 1, delay: 0.2 }} 
+                />
+            </div>
 
             <div className="text-about">
                 <motion.p

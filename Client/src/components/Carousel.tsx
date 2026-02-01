@@ -3,7 +3,11 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
 import '../style/consultorio.css';
 import consul1 from "../assets/images/consul1.png"
-import consul2 from "../assets/images/consul2.png"
+import consul2 from "../assets/images/consul2.jpg"
+import consul3 from "../assets/images/consul3.jpeg"
+import consul4 from "../assets/images/consul4.jpeg"
+
+
 
 export const Consultorio = () => {
   
@@ -12,11 +16,10 @@ export const Consultorio = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const images = [
-    // 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800',
-    // 'https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=800',
-    // 'https://images.unsplash.com/photo-1600585152915-d208bec867a1?w=800',
     consul1,
-    consul2
+    consul2,
+    consul3,
+    consul4
   ];
 
   const nextSlide = () => {
@@ -49,7 +52,7 @@ export const Consultorio = () => {
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <h2>Mi Consultorio</h2>
+        <h2> Consultorios</h2>
       </motion.div>
 
       <motion.p 
@@ -68,6 +71,9 @@ export const Consultorio = () => {
         animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
         transition={{ duration: 0.6, delay: 0.4 }}
       >
+
+        
+
         <motion.button 
           onClick={prevSlide} 
           className="carousel-button carousel-button-left"
@@ -106,6 +112,8 @@ export const Consultorio = () => {
         >
           <ChevronRight size={32} />
         </motion.button>
+        
+
 
         <div className="carousel-dots">
           {images.map((_, index) => (

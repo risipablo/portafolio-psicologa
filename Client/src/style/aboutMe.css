@@ -5,6 +5,24 @@
     
 }
 
+.img-sr{
+    margin: 1.2rem auto 2rem;
+}
+
+.img-sr img {
+    display: block;
+    margin: 0 auto;
+    max-width: 300px;
+    max-height: 320px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
 .title-about {
     text-align: center;
     margin-bottom: 3rem;
@@ -12,7 +30,7 @@
 
 .title-about h2 {
     font-family: 'Poppins', sans-serif;
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     font-weight: 700;
     color: #030303;
     margin-bottom: 1rem;
@@ -35,9 +53,6 @@
     background: linear-gradient(90deg, #3570f0fb, #155aeee0);
     border-radius: 2px;
     
-    body.dark & {
-        background: linear-gradient(90deg, #1e5bdffb, #3570f0fb);
-    }
 }
 
 .text-about {

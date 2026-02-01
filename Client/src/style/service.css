@@ -1,83 +1,75 @@
-.icon-grid {
+.service-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    gap: 3rem;
     max-width: 1200px;
-    margin: 3rem auto;
-    padding: 2rem;
+    /* margin: 3rem auto; */
+    padding: 3rem;
 }
 
 .icon-card {
-    background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+    position: relative;
+    aspect-ratio: 1 / 1; 
     border-radius: 16px;
-    padding: 2.5rem 1.5rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+    overflow: hidden;
     cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+    transition: all 0.3s ease;
     
-    body.dark & {
-        background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    }
 }
 
 .icon-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 24px rgba(53, 112, 240, 0.2);
-    
-    body.dark & {
-        box-shadow: 0 12px 24px rgba(30, 91, 223, 0.3);
-    }
 }
 
-.icon-card .icon {
-    width: 48px;
-    height: 48px;
-    margin: 0 auto 1rem;
-    color: #3570f0fb;
-    stroke-width: 1.5;
-    
-    body.dark & {
-        color: #1e5bdffb;
-    }
+.icon-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .icon-card h3 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #2c2c2c;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     margin: 0;
+    padding: 16px;
+    background: rgba(46, 46, 46, 0.8);
+    color: #fff;
+    text-align: center;
+    opacity: 0;
     
-    body.dark & {
-        color: #e9e7e7;
-    }
+    transform: translateY(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    font-family: 'Smooch Sans', sans-serif;
+    font-size: 1.3rem;
+    line-height: 1.8;
+}
+
+.icon-card:hover h3 {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 @media (max-width: 850px) {
-    .icon-grid {
+    .service-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 1.5rem;
         padding: 1.5rem;
     }
     
-    .icon-card {
-        padding: 2rem 1rem;
-    }
-    
-    .icon-card .icon {
-        width: 40px;
-        height: 40px;
-    }
-    
     .icon-card h3 {
+        opacity: 1;
+        transform: translateY(0);
         font-size: 1rem;
     }
 }
 
 @media (max-width: 500px) {
-    .icon-grid {
+    .service-grid {
         grid-template-columns: 1fr;
     }
 }
