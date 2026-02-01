@@ -1,5 +1,4 @@
-import { Page } from "./pages/Page"
-
+import { Page } from "./pages/page"
 function App() {
  
 
