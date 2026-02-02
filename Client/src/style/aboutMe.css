@@ -30,16 +30,13 @@
 
 .title-about h2 {
     font-family: 'Poppins', sans-serif;
-    font-size: 2.3rem;
+    font-size: clamp(1.8rem, 4vw, 2.3rem);
     font-weight: 700;
     color: #030303;
     margin-bottom: 1rem;
     position: relative;
     display: inline-block;
     
-    body.dark & {
-        color: #e9e7e7;
-    }
 }
 
 .title-about h2::after {
@@ -81,17 +78,14 @@
         padding: 1.5rem;
     }
     
-    .title-about h2 {
-        font-size: 2.5rem;
-    }
-    
+
     .title-about h2::after {
         width: 60px;
         height: 3px;
     }
     
     .text-about {
-        font-size: 1rem;
+        font-size: 1.5rem;
         text-align: left;
     }
 }

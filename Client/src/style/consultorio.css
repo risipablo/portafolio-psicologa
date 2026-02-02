@@ -1,235 +1,240 @@
 .container-consultorio {
-    max-width: 1200px;
-    margin: 6rem auto;
+  max-width: 1200px;
+  margin: 6rem auto;
 }
 
 .title-consultorio {
-  text-align: center;
-  margin-bottom: 1rem;
+text-align: center;
+margin-bottom: 1rem;
 }
 
 .title-consultorio h2 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2.3rem;
-  font-weight: 700;
-  color: #030303;
-  margin-bottom: 1rem;
-  position: relative;
-  display: inline-block;
+font-family: 'Montserrat', sans-serif;
+font-size: 2.3rem;
+font-weight: 700;
+color: #030303;
+margin-bottom: 1rem;
+position: relative;
+display: inline-block;
 }
 
 body.dark .title-consultorio h2 {
-  color: #e9e7e7;
+color: #e9e7e7;
 }
 
 .underline-consultorio {
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, #3570f0fb, #155aeee0);
-  border-radius: 2px;
-  margin: 0 auto;
+width: 80px;
+height: 4px;
+background: linear-gradient(90deg, #3570f0fb, #155aeee0);
+border-radius: 2px;
+margin: 0 auto;
 }
 
 body.dark .underline-consultorio {
-  background: linear-gradient(90deg, #1e5bdffb, #3570f0fb);
+background: linear-gradient(90deg, #1e5bdffb, #3570f0fb);
 }
 
 .description-consultorio {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #2c2c2c;
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 3rem;
+font-family: 'Poppins', sans-serif;
+font-size: 1.1rem;
+line-height: 1.8;
+color: #2c2c2c;
+text-align: center;
+max-width: 800px;
+margin: 0 auto 3rem;
 }
 
 body.dark .description-consultorio {
-  color: #d4d4d4;
+color: #d4d4d4;
 }
 
+/* CORREGIDO: Removido box-shadow y ajustado */
 .carousel-container {
-  position: relative;
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+position: relative;
+width: 100%;
+max-width: 600px; /* Reducido para ajustar al ancho de imagen */
+margin: 0 auto;
+overflow: visible; /* Cambiado de hidden a visible */
 }
 
+/* CORREGIDO: Removido min-height y ajustado */
 .carousel-image-container {
-  position: relative;
-  width: 100%;
-  height: auto;
-  min-height: 420px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+position: relative;
+width: 100%;
+height: auto;
+overflow: hidden;
+display: flex;
+align-items: center;
+justify-content: center;
+background: transparent; /* Asegura fondo transparente */
 }
 
 .carousel-slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: all 0.5s ease-in-out;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+opacity: 0;
+transition: all 0.5s ease-in-out;
 }
 
 .carousel-slide.active {
-  opacity: 1;
+opacity: 1;
+position: relative; /* Importante para que tome el espacio */
 }
 
 .carousel-inner {
-  position: relative;
-  width: fit-content;
-  margin: 0 auto;
+position: relative;
+width: fit-content;
+margin: 0 auto;
 }
 
-
+/* CORREGIDO: Ajustada imagen */
 .carousel-image {
-  display: block;
-  margin: 0 auto;
-  max-width: 400px;
-  max-height: 100%;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  border-radius: 12px;
+display: block;
+margin: 0 auto;
+max-width: 400px;
+width: 100%;
+height: auto;
+aspect-ratio: 3 / 4;
+object-fit: cover;
+border-radius: 12px;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Sombra movida aquí */
 }
 
+/* CORREGIDO: Flechas más cerca de la imagen */
 .carousel-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 10;
-  transition: all 0.3s ease;
-  color: #fff;
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+background: rgba(0, 0, 0, 0.5);
+border: none;
+border-radius: 50%;
+width: 50px;
+height: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+z-index: 10;
+transition: all 0.3s ease;
+color: #fff;
 }
 
 .carousel-button:hover {
-  background: rgba(53, 112, 240, 0.8);
-  transform: translateY(-50%) scale(1.1);
+background: rgba(53, 112, 240, 0.8);
+transform: translateY(-50%) scale(1.1);
 }
 
+/* CORREGIDO: Flechas más pegadas a la imagen */
 .carousel-button-left {
-  left: 20px;
+left: -25px; /* Cambiado de 20px a -25px (fuera del contenedor) */
 }
 
 .carousel-button-right {
-  right: 20px;
+right: -25px; /* Cambiado de 20px a -25px */
 }
 
 .carousel-dots {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  z-index: 10;
+position: absolute;
+bottom: 20px;
+left: 50%;
+transform: translateX(-50%);
+display: flex;
+gap: 10px;
+z-index: 10;
 }
 
 .carousel-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  background: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 0;
+width: 12px;
+height: 12px;
+border-radius: 50%;
+border: 2px solid #fff;
+background: rgba(255, 255, 255, 0.5);
+cursor: pointer;
+transition: all 0.3s ease;
+padding: 0;
 }
 
 .carousel-dot:hover {
-  background: rgba(255, 255, 255, 0.8);
+background: rgba(255, 255, 255, 0.8);
 }
 
 .carousel-dot.active {
-  background: #fff;
-  width: 14px;
-  height: 14px;
+background: #fff;
+width: 14px;
+height: 14px;
 }
 
 @media (max-width: 850px) {
-  .container-consultorio {
-    margin: 2rem auto;
-    padding: 1.5rem;
-  }
-  
-  .title-consultorio h2 {
-    font-size: 2.5rem;
-  }
-  
-  .description-consultorio {
-    font-size: 1rem;
-  }
-  
-  .carousel-image-container {
-    height: 350px;
-  }
-  
-  .carousel-image {
-    max-width: 320px;
-  }
-  
-  .carousel-button {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .carousel-button-left {
-    left: 10px;
-  }
-  
-  .carousel-button-right {
-    right: 10px;
-  }
+.container-consultorio {
+  margin: 2rem auto;
+  padding: 1.5rem;
+}
+
+.title-consultorio h2 {
+  font-size: 2.5rem;
+}
+
+.description-consultorio {
+  font-size: 1rem;
+}
+
+.carousel-image {
+  max-width: 320px;
+}
+
+.carousel-button {
+  width: 40px;
+  height: 40px;
+}
+
+/* Flechas más pegadas en mobile */
+.carousel-button-left {
+  left: -15px;
+}
+
+.carousel-button-right {
+  right: -15px;
+}
 }
 
 @media (max-width: 500px) {
-  .container-consultorio {
-    margin: 1.5rem 1rem;
-    padding: 1rem;
-  }
-  
-  .title-consultorio h2 {
-    font-size: 2rem;
-  }
-  
-  .carousel-image-container {
-    height: 250px;
-  }
-  
-  .carousel-image {
-    max-width: 260px;
-  }
-  
-  .carousel-button {
-    width: 35px;
-    height: 35px;
-  }
-  
-  .carousel-dot {
-    width: 10px;
-    height: 10px;
-  }
-  
-  .carousel-dot.active {
-    width: 12px;
-    height: 12px;
-  }
+.container-consultorio {
+  margin: 1.5rem 1rem;
+  padding: 1rem;
+}
+
+.title-consultorio h2 {
+  font-size: 2rem;
+}
+
+.carousel-image {
+  max-width: 280px;
+}
+
+.carousel-button {
+  width: 35px;
+  height: 35px;
+}
+
+/* Flechas aún más pegadas en pantallas pequeñas */
+.carousel-button-left {
+  left: 5px; /* Dentro de la imagen en mobile */
+}
+
+.carousel-button-right {
+  right: 5px;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+}
+
+.carousel-dot.active {
+  width: 12px;
+  height: 12px;
+}
 }
