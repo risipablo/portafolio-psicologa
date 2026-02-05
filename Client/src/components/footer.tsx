@@ -8,12 +8,12 @@ export const Footer = () => {
       <div className="footer-content">
         <div className="footer-info">
           <h3>Sabrina Ramos</h3>
-          <p>Psicóloga Integradora</p>
+          <p>Licenciada en Psicologia</p>
         </div>
 
         <div className="footer-social">
           <a 
-            href="https://wa.me/5491112345678" 
+            href="https://wa.me/2994654519" 
             target="_blank" 
             rel="noopener noreferrer"
             className="social-link whatsapp"
@@ -23,7 +23,7 @@ export const Footer = () => {
           </a>
 
           <a 
-            href="https://instagram.com/tu-usuario" 
+            href="https://www.instagram.com/psicologaintegral_sabrinaramos" 
             target="_blank" 
             rel="noopener noreferrer"
             className="social-link instagram"

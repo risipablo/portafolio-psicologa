@@ -10,6 +10,7 @@ import { ContactForm } from "../components/contact"
 import Footer from "../components/footer"
 import { ScrollTop } from "../utils/scrolltop"
 import { Whatsapp } from "../utils/whatsapp"
+import { Instagram } from "../utils/instagram"
 
 
 export const Page = () => {
@@ -26,6 +27,7 @@ export const Page = () => {
             <ContactForm/>
             <Footer/>
             <ScrollTop/>
+            <Instagram/>
             <Whatsapp/>
         </BrowserRouter>
 

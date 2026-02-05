@@ -54,22 +54,19 @@
 
 .text-about {
     font-family: 'Smooch Sans', sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     line-height: 1.8;
     font-weight: 500;
     color: #2c2c2c;
     text-align: justify;
-    
+    text-justify: inter-word;
     max-width: 700px;
     margin: 0 auto;
     
-    body.dark & {
-        color: #d4d4d4;
-    }
 }
 
 .text-about p {
-    margin-bottom: .5rem;
+    margin: .9rem auto;
 }
 
 @media (max-width: 850px) {
@@ -84,8 +81,9 @@
         height: 3px;
     }
     
-    .text-about {
-        font-size: 1.5rem;
+    .text-about p {
+        justify-content: center;
         text-align: left;
+        font-size: 1.5rem;
     }
 }
