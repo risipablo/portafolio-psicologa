@@ -2,7 +2,9 @@
 import { useEffect, useState } from "react";
 import { animateScroll as scroll} from "react-scroll";
 import "../style/scrollTop.css"
-import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
+import { Brain } from "lucide-react";
+
+
 
 export function ScrollTop(){
 
@@ -32,7 +34,7 @@ export function ScrollTop(){
 
      return(
         <button onClick={onClickUp}   style={{ display: visible ? 'block' : 'none' }} className="btn-volver-arriba">
-             <ArrowCircleUpIcon/>
+             <Brain />
         </button>
      )
 }

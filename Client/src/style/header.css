@@ -8,6 +8,7 @@
     padding: 2rem 1rem;
     background-color: rgb(232, 232, 223);
     box-sizing: border-box;
+    font-family: "Playwrite NZ Basic", cursive;
 }
 
 .container-image {
@@ -23,36 +24,44 @@
     object-fit: cover;
 }
 
-.info-text {
+.info{
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: "Playwrite NZ Basic", cursive;
     text-align: center;
     max-width: 100%;
     padding: 0 1rem;
 }
 
-.info-text h2 {
-    margin: 0 0 1.5rem 0;
-    font-size: clamp(2rem, 6vw, 3.2rem);
+.info h2 {
+    margin: 1.2rem 0 2rem 0;
+    font-size: clamp(2rem, 6vw, 3rem);
     font-weight: 700;
     line-height: 1.2;
 }
 
-.info-text h3 {
-    margin: 0.5rem 0;
-    font-size: clamp(1.2rem, 4vw, 2.2rem);
+
+
+.sub-titles{
+    margin: 1.2rem 0 .9rem;
+}
+
+.sub-titles h3 {
+    font-size: clamp(1rem, 4vw, 1.2rem);
     letter-spacing: clamp(1px, 0.5vw, 3px);
     font-weight: 700;
     line-height: 1.4;
+    
+}
+
+.sub-titles h3:last-child{
+    margin: 1rem auto .2rem;
 }
 
 @media (max-width: 700px) {
     .container-header {
         flex-direction: column;
         min-height: 70vh;
-        /* margin: 2rem auto 1rem; */
         padding: 3rem 1rem;
         gap: 1.5rem;
     }
@@ -62,36 +71,34 @@
         height: 200px;
     }
     
-    .info-text h3 {
+    .info h3 {
+        margin: 1rem 0;
         letter-spacing: 1.5px;
     }
 }
 
 @media (max-width: 480px) {
-
-    
     .container-image img {
         width: 180px;
         height: 180px;
     }
     
-    .info-text {
+    .info{
         padding: 0 0.5rem;
     }
     
-    .info-text h2 {
-        margin-bottom: 1rem;
+    .info h2 {
+        margin-bottom: 1.2rem;
     }
     
-    .info-text h3 {
+    .info h3 {
+        margin: 0.9rem 0;
         letter-spacing: 1px;
-        margin: 0.4rem 0;
     }
 }
 
 @media (max-width: 360px) {
     .container-header {
-        /* margin: 1rem auto 0.5rem; */
         padding: 1rem 0.5rem;
         gap: 1rem;
     }
@@ -101,12 +108,12 @@
         height: 160px;
     }
     
-    .info-text h2 {
-        margin-bottom: 0.8rem;
+    .info h2 {
+        margin-bottom: 1rem;
     }
     
-    .info-text h3 {
+    .info h3 {
+        margin: 0.8rem 0;
         letter-spacing: 0.5px;
-        margin: 0.3rem 0;
     }
 }

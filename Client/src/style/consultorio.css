@@ -169,7 +169,7 @@ height: 14px;
 
 @media (max-width: 850px) {
 .container-consultorio {
-  margin: 2rem auto;
+  margin: 2.5rem auto;
   padding: 1.5rem;
 }
 
@@ -202,8 +202,8 @@ height: 14px;
 
 @media (max-width: 500px) {
 .container-consultorio {
-  margin: 1.5rem 1rem;
-  padding: 1rem;
+  margin: 2.5rem auto;
+  padding: 1.5rem;
 }
 
 .title-consultorio h2 {

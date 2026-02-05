@@ -23,7 +23,7 @@ export const FAQ = () => {
     },
     {
       question: "¿Qué métodos terapéuticos utilizás?",
-      answer: "Trabajo desde un enfoque integrativo que combina diferentes herramientas terapéuticas según tus necesidades. Integro la Psicología tradicional con Biodescodificación, Flores de Bach, Astrología Psicológica, Constelaciones Familiares y otras técnicas complementarias. Este enfoque me permite ofrecerte un acompañamiento personalizado que aborda tanto aspectos emocionales como espirituales."
+      answer: "Trabajo desde un Enfoque Integrativo que combina diferentes herramientas terapéuticas según tus necesidades. Integro la Psicología tradicional con técnicas complementarias como la Biodescodificación, Terapia Floral, Astrología Psicológica, Constelaciones Familiares, Programación Neurolingüística, entre otras."
     },
   ];
 

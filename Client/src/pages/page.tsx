@@ -9,6 +9,7 @@ import LocationMap from "../components/locationmap"
 import { ContactForm } from "../components/contact"
 import Footer from "../components/footer"
 import { ScrollTop } from "../utils/scrolltop"
+import { Whatsapp } from "../utils/whatsapp"
 
 
 export const Page = () => {
@@ -25,6 +26,7 @@ export const Page = () => {
             <ContactForm/>
             <Footer/>
             <ScrollTop/>
+            <Whatsapp/>
         </BrowserRouter>
 
     )
