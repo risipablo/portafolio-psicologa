@@ -1,4 +1,4 @@
-import { BrowserRouter } from "react-router-dom"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Navbar } from "../components/navbar"
 import { Header } from "../components/header"
 import { AboutMe } from "../components/aboutme"
@@ -11,6 +11,7 @@ import Footer from "../components/footer"
 import { ScrollTop } from "../utils/scrolltop"
 import { Whatsapp } from "../utils/whatsapp"
 import { Instagram } from "../utils/instagram"
+import { Talleres } from "../components/servicios/talleres"
 
 
 export const Page = () => {
@@ -18,14 +19,23 @@ export const Page = () => {
     return(
         <BrowserRouter>
             <Navbar/>
-            <Header/>
-            <AboutMe/>
-            <ServiceGrid/>
-            <FAQ/>
-            <Consultorio/>
-            <LocationMap/>
-            <ContactForm/>
-            <Footer/>
+            <Routes>
+                <Route path="/" element={
+                    <>
+                        <Header/>
+                        <AboutMe/>
+                        <ServiceGrid/>
+                        <FAQ/>
+                        <Consultorio/>
+                        <LocationMap/>
+                        <ContactForm/>
+                        <Footer/>
+                    </>
+                }/>
+                <Route path="/section/:id"/>
+                <Route path="/talleres" element={<Talleres/>}/>
+            </Routes>
+
             <ScrollTop/>
             <Instagram/>
             <Whatsapp/>

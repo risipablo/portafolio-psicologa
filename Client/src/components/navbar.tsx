@@ -23,7 +23,10 @@ export const Navbar = () => {
             <div className="navbar">
 
                 <div className="logo-container">
-                    <img src={logo} alt="" />
+                    <NavLink to="/">
+                    <img src={logo} alt="logo" />
+                    </NavLink>
+                    
                 </div>
 
                 <div className={`menu ${isMenu ? 'open' : ''}`}>

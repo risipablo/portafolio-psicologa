@@ -104,37 +104,98 @@
     justify-content: center;
 }
 
-
 .card-back {
-    background: linear-gradient(135deg, #121212fb 0%, #121212e0 100%);
+    background: linear-gradient(135deg, rgba(53, 112, 240, 0.9) 0%, rgba(21, 90, 238, 0.9) 100%);
     color: #ffffff;
     transform: rotateY(180deg);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    gap: 1.5rem;
+}
+
+body.dark .card-back {
+    background: linear-gradient(135deg, rgba(30, 91, 223, 0.9) 0%, rgba(53, 112, 240, 0.9) 100%);
+}
+
+.card-back-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.card-back-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(1px);
+    z-index: 1;
 }
 
 
-.card-back button {
+
+.card-back p {
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 1rem 0 0 ;
+    text-align: center;
+    /* padding: 0 1rem; */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 2;
+}
+
+.card-back-button {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
-    margin: 0;
-    padding: 0.8rem 2rem;
-    background-color: #f0f0f0;
-    color: #030303;
+    margin: 1rem auto 0 ;
+    padding: 0;
+    background-color: transparent;
     border: none;
-    border-radius: 8px;
     cursor: pointer;
+    position: relative;
+    z-index: 2;
+}
+
+.button-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 2rem;
+    background-color: transparent;
+    color: #fffffffb;
+    border-radius: 8px;
+    text-decoration: none;
     transition: all 0.3s ease;
 }
 
-.card-back button:hover {
-    background-color: #f0f0f0;
-    transform: translateY(-8px);
-    color:#030303;
+.button-link:hover {
+    background-color: #ffffff;
+    color: #030303;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }
 
-.card-back button:active {
+.button-link:active {
     transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
+
 
 
 @media (max-width: 850px) {

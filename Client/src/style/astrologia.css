@@ -1,0 +1,211 @@
+.talleres-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+}
+
+.talleres-hero {
+    text-align: center;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+    padding: 2rem 1rem;
+}
+
+.taller-card {
+    background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+    border-radius: 16px;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.taller-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(53, 112, 240, 0.15);
+}
+
+body.dark .taller-card {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .taller-card:hover {
+    box-shadow: 0 8px 30px rgba(30, 91, 223, 0.25);
+}
+
+.taller-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.taller-icon {
+    color: #3570f0fb;
+    flex-shrink: 0;
+    width: clamp(28px, 5vw, 36px);
+    height: clamp(28px, 5vw, 36px);
+}
+
+body.dark .taller-icon {
+    color: #1e5bdffb;
+}
+
+.taller-header h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: #030303;
+    margin: 0;
+}
+
+body.dark .taller-header h2 {
+    color: #e9e7e7;
+}
+
+.taller-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: 600;
+    color: #3570f0fb;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+body.dark .taller-subtitle {
+    color: #1e5bdffb;
+}
+
+.taller-description {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    line-height: 1.8;
+    color: #2c2c2c;
+    margin-bottom: 2rem;
+}
+
+body.dark .taller-description {
+    color: #d4d4d4;
+}
+
+.taller-benefits {
+    background: rgba(53, 112, 240, 0.05);
+    border-left: 4px solid #3570f0fb;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+body.dark .taller-benefits {
+    background: rgba(30, 91, 223, 0.1);
+    border-left-color: #1e5bdffb;
+}
+
+.taller-benefits h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    font-weight: 600;
+    color: #030303;
+    margin: 0 0 1rem 0;
+}
+
+body.dark .taller-benefits h3 {
+    color: #e9e7e7;
+}
+
+.taller-benefits ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.taller-benefits li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    color: #2c2c2c;
+}
+
+body.dark .taller-benefits li {
+    color: #d4d4d4;
+}
+
+.taller-benefits li svg {
+    color: #3570f0fb;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+}
+
+body.dark .taller-benefits li svg {
+    color: #1e5bdffb;
+}
+
+.taller-quote {
+    background: linear-gradient(135deg, #3570f0fb 0%, #155aeee0 100%);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-top: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+body.dark .taller-quote {
+    background: linear-gradient(135deg, #1e5bdffb 0%, #3570f0fb 100%);
+}
+
+.taller-quote::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    left: 10px;
+    font-size: 6rem;
+    font-family: Georgia, serif;
+    color: rgba(255, 255, 255, 0.2);
+    line-height: 1;
+}
+
+.taller-quote p {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    font-style: italic;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .taller-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+    }
+
+    .taller-benefits {
+        padding: 1rem;
+    }
+
+    .taller-quote {
+        padding: 1.2rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .talleres-container {
+        padding: 2rem 1rem;
+    }
+
+    .taller-card {
+        padding: 1.5rem;
+    }
+
+    .taller-benefits li {
+        gap: 0.6rem;
+    }
+}

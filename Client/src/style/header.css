@@ -35,9 +35,9 @@
 
 .info h2 {
     font-family: 'Poppins', sans-serif;
-    margin: 1.2rem 0 2rem 0;
+    /* margin: .9rem  auto; */
     font-size: clamp(2rem, 6vw, 3rem);
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.2;
 }
 
@@ -71,50 +71,21 @@
         width: 200px;
         height: 200px;
     }
+    .info h2{
+        margin-top: 1rem;
+    }
     
     .info h3 {
-        margin: 1rem 0;
+        margin: .5rem auto;
         letter-spacing: 1.5px;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 350px) {
     .container-image img {
         width: 180px;
         height: 180px;
     }
     
-    .info{
-        padding: 0 0.5rem;
-    }
-    
-    .info h2 {
-        margin-bottom: 1.2rem;
-    }
-    
-    .info h3 {
-        margin: 0.9rem 0;
-        letter-spacing: 1px;
-    }
 }
 
-@media (max-width: 360px) {
-    .container-header {
-        padding: 1rem 0.5rem;
-        gap: 1rem;
-    }
-    
-    .container-image img {
-        width: 160px;
-        height: 160px;
-    }
-    
-    .info h2 {
-        margin-bottom: 1rem;
-    }
-    
-    .info h3 {
-        margin: 0.8rem 0;
-        letter-spacing: 0.5px;
-    }
-}

@@ -2,12 +2,16 @@ import '../style/service.css'
 import image1 from "../assets/images/tratamiento.jpeg"
 import image2 from "../assets/images/asesorias.jpeg"
 import image3 from "../assets/images/formaciones.jpeg"
-// import image4 from "../assets/images/talleres.jpeg"
+import image4 from "../assets/images/saludIn.jpeg"
 import image5 from "../assets/images/programas.jpeg"
 import image6 from "../assets/images/piscoint.jpeg"
+import taller2 from "../assets/images/taller.jpeg"
+
 
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
+import { NavLink } from 'react-router-dom'
+import { Eye } from 'lucide-react'
 
 
 export const ServiceGrid = () => {
@@ -16,11 +20,11 @@ export const ServiceGrid = () => {
     const [flippedCard, setFlippedCard] = useState<number | null>(null);
 
     const services = [
-        {id:1, title:"Psicoterapia", image:image1,},
+        {id:1, title:"Psicoterapia", image:image1, image2:image5, descrip: ""},
         {id:2, title:"Asesorias", image:image2},
         {id:3, title:"Formaciones", image:image5},
-        {id:4, title:"Talleres", image:image3},
-        {id:5, title:"BioSalud Integrativa", image:image5},
+        {id:4, title:"Talleres", image:image3, image2:taller2,descrip:"Talleres grupales de bienestar y crecimiento personal. Te invito a conocerlos.", route:"/talleres"},
+        {id:5, title:"BioSalud Integrativa", image:image4 ,image2: image4},
         {id:6, title:"Psicoterapia Integrativa", image:image6},
     ];
 
@@ -66,7 +70,19 @@ export const ServiceGrid = () => {
                             </div>
                             
                             <div className="card-back">
-                                <button>Ver más</button>
+                                <img src={service.image2} alt="" className="card-back-image" />
+                                <div className="card-back-overlay"></div>
+                                <p>{service.descrip}</p>
+                                <button className="card-back-button">
+                                    <NavLink 
+                                        to={service.route || `/section/${service.id}`} 
+                                        className="button-link"
+                                        onClick={(e) => e.stopPropagation()}
+                                    >
+                                        <Eye size={20} />
+                                        <span>Ver más</span>
+                                    </NavLink>
+                                </button>
                             </div>
                         </div>
                     </motion.div>
