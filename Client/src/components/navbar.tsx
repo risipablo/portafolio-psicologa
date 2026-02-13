@@ -50,9 +50,9 @@ export const Navbar = () => {
 
                 </div>
 
-                <div className="user-container">
+                {/* <div className="user-container">
                     User
-                </div>
+                </div> */}
 
                 <div className="menu-icon" onClick={toggleMenu} >
                     <span></span>
