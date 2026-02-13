@@ -18,7 +18,7 @@ import image17 from "../../../assets/images/astrologia/17.jpeg"
 import image18 from "../../../assets/images/astrologia/18.jpeg"
 
  const astrologiaFotos = [
-    image1,image2,image3,image4,image5,image6,image7,image8,image9,image10,image11,image12,image13,image14,image15,image16,image17,image18
+    image2,image3,image4,image5,image6,image7,image8,image9,image10,image1,image11,image12,image13,image14,image15,image16,image17,image18
 ];
 
 export default astrologiaFotos

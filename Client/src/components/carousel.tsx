@@ -5,7 +5,9 @@ import '../style/consultorio.css';
 import consul1 from "../assets/images/consul1.png"
 import consul2 from "../assets/images/consul2.jpg"
 import consul3 from "../assets/images/consul3.jpeg"
-import consul4 from "../assets/images/consul4.jpeg"
+import consul4 from "../assets/images/consultorio/consul3.jpeg"
+import consul5 from "../assets/images/consulR.jpeg"
+
 
 
 
@@ -19,7 +21,8 @@ export const Consultorio = () => {
     consul1,
     consul2,
     consul3,
-    consul4
+    consul4,
+    consul5
   ];
 
   const nextSlide = () => {

@@ -24,14 +24,7 @@
     box-shadow: 0 8px 30px rgba(53, 112, 240, 0.15);
 }
 
-body.dark .taller-card {
-    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
 
-body.dark .taller-card:hover {
-    box-shadow: 0 8px 30px rgba(30, 91, 223, 0.25);
-}
 
 .taller-header {
     display: flex;

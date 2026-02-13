@@ -6,6 +6,9 @@ import image4 from "../assets/images/saludIn.jpeg"
 import image5 from "../assets/images/programas.jpeg"
 import image6 from "../assets/images/piscoint.jpeg"
 import taller2 from "../assets/images/taller.jpeg"
+import asesoria from "../assets/images/psicologa/ps5.jpeg"
+import forma from "../assets/images/forma2.jpeg"
+import tera2 from "../assets/images/psicologa/ps14.jpeg"
 
 
 import { motion, useInView } from 'framer-motion'
@@ -20,9 +23,9 @@ export const ServiceGrid = () => {
     const [flippedCard, setFlippedCard] = useState<number | null>(null);
 
     const services = [
-        {id:1, title:"Psicoterapia", image:image1, image2:image5, descrip: ""},
-        {id:2, title:"Asesorias", image:image2},
-        {id:3, title:"Formaciones", image:image5},
+        {id:1, title:"Psicoterapia", image:image1, image2:tera2, descrip: ""},
+        {id:2, title:"Asesorias", image:image2, image2:asesoria},
+        {id:3, title:"Formaciones", image:image5, image2:forma},
         {id:4, title:"Talleres", image:image3, image2:taller2,descrip:"Talleres grupales de bienestar y crecimiento personal. Te invito a conocerlos.", route:"/talleres"},
         {id:5, title:"BioSalud Integrativa", image:image4 ,image2: image4},
         {id:6, title:"Psicoterapia Integrativa", image:image6},
