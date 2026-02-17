@@ -15,7 +15,7 @@ if (!process.env.RESEND_API_KEY || !process.env.EMAIL_USER) {
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const corsOptions = {
-    origin: ['http://localhost:5173', 'https://sabrina-ramos-psicologa.vercel.app'],
+    origin: ['http://localhost:5173', 'https://sabrina-ramos-psicologa.vercel.app', 'https://portafolio-psicologa.onrender.com'],
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
@@ -38,13 +38,13 @@ app.post('/send-email', async (req, res) => {
     console.log('📦 Body:', req.body);
     
     try {
-        const { name, email, message, cellphone } = req.body;
+        const { name, lastname, email, message, cellphone } = req.body;
 
         // Validar campos requeridos
-        if (!name || !email || !message) {
+        if (!name || !lastname || !email || !message || !cellphone) {
             console.log('❌ Faltan campos requeridos');
             return res.status(400).json({ 
-                error: 'Todos los campos son requeridos: name, email, message' 
+                error: 'Todos los campos son requeridos: name, lastname, email, message, cellphone' 
             });
         }
 
@@ -54,7 +54,7 @@ app.post('/send-email', async (req, res) => {
               from: 'Portfolio Contact <onboarding@resend.dev>',
             to: process.env.EMAIL_USER,
             replyTo: email,
-            subject: `Nuevo contacto: ${name} - Portafolio`,
+            subject: `Nuevo contacto: ${name} ${lastname} - Portafolio`,
             html: `
                 <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto;">
                     <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; color: white; text-align: center;">

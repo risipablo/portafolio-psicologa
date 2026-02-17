@@ -2,6 +2,18 @@ import { useState, type ChangeEvent, type FormEvent, useRef } from 'react';
 import { Send } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
 import "../style/contac.css"
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
+
+const serverFront = "https://portafolio-psicologa.onrender.com"
+
+const api = axios.create({
+  baseURL: serverFront,
+  timeout:3000,
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
 
 export const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +27,9 @@ export const ContactForm = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -25,17 +40,53 @@ export const ContactForm = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Datos del formulario:', formData);
-    alert('Formulario enviado con éxito!');
+    setIsLoading(true);
+
+    const newErrors: Record<string, string> = {};
+    if (!formData.nombre.trim()) newErrors.nombre = 'El nombre es requerido';
+    if (!formData.apellido.trim()) newErrors.apellido = 'El apellido es requerido';
+    if (!formData.celular.trim()) newErrors.celular = 'El celular es requerido';
+    if (!formData.email.trim()) newErrors.email = 'El email es requerido';
+    if (!formData.consulta.trim()) newErrors.consulta = 'La consulta es requerida';
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      setIsLoading(false);
+      return;
+    }
+
+    try{
+       toast.promise(
+        api.post('/send-email', {
+          name: formData.nombre,
+          lastname: formData.apellido,
+          email: formData.email,
+          message: formData.consulta,
+          cellphone: formData.celular
+
+        }),{
+          loading: 'Enviando consulta...',
+          success: 'Consulta enviada con éxito. ¡Gracias por contactarme!',
+          error: 'Error al enviar la consulta. Por favor, intentá nuevamente.'
+        }
+      )
+
+      setFormData({
+        nombre: '',
+        apellido: '',
+        celular: '',
+        email: '',
+        consulta: ''
+      })
+      setErrors({});
     
-    setFormData({
-      nombre: '',
-      apellido: '',
-      celular: '',
-      email: '',
-      consulta: ''
-    });
-  };
+    }catch(error){
+      console.error('Error al enviar la consulta:', error);
+    }finally{
+      setIsLoading(false);
+    }  
+ 
+  }
 
   return (
     <motion.div 
@@ -86,7 +137,9 @@ export const ContactForm = () => {
               onChange={handleChange}
               required
               placeholder="Tu nombre"
+              className={errors.nombre ? 'error' : ''}
             />
+            {errors.nombre && <span className="error-message">{errors.nombre}</span>}
           </div>
 
           <div className="form-group">
@@ -99,7 +152,9 @@ export const ContactForm = () => {
               onChange={handleChange}
               required
               placeholder="Tu apellido"
+              className={errors.apellido ? 'error' : ''}
             />
+            {errors.apellido && <span className="error-message">{errors.apellido}</span>}
           </div>
         </motion.div>
 
@@ -118,7 +173,9 @@ export const ContactForm = () => {
             onChange={handleChange}
             required
             placeholder="+54 9 11 1234-5678"
+            className={errors.celular ? 'error' : ''}
           />
+          {errors.celular && <span className="error-message">{errors.celular}</span>}
         </motion.div>
 
         <motion.div 
@@ -136,7 +193,9 @@ export const ContactForm = () => {
             onChange={handleChange}
             required
             placeholder="tu@email.com"
+            className={errors.email ? 'error' : ''}
           />
+          {errors.email && <span className="error-message">{errors.email}</span>}
         </motion.div>
 
         <motion.div 
@@ -154,7 +213,9 @@ export const ContactForm = () => {
             required
             placeholder="Contame sobre tu consulta o motivo de contacto..."
             rows={6}
+            className={errors.consulta ? 'error' : ''}
           ></textarea>
+          {errors.consulta && <span className="error-message">{errors.consulta}</span>}
         </motion.div>
 
         <motion.button 
@@ -163,11 +224,12 @@ export const ContactForm = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5, delay: 0.9 }}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
+          whileHover={{ scale: isLoading ? 1 : 1.02 }}
+          whileTap={{ scale: isLoading ? 1 : 0.98 }}
+          disabled={isLoading}
         >
           <Send size={20} />
-          <span>Enviar Consulta</span>
+          <span>{isLoading ? 'Enviando...' : 'Enviar Consulta'}</span>
         </motion.button>
       </motion.form>
     </motion.div>
