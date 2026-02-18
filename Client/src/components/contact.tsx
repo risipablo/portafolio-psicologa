@@ -8,7 +8,7 @@ import type { IContact } from '../interface/type';
 
 
 const serverFront = "https://portafolio-psicologa.onrender.com"
-// const serverFront = "http://localhost:3001";
+
 
 const api = axios.create({
   baseURL: serverFront,
@@ -58,37 +58,32 @@ export const ContactForm = () => {
       return;
     }
 
-    try{
-       toast.promise(
-        api.post('/send-email', {
-          name: formData.name,
-          lastname: formData.lastname,
-          email: formData.email,
-          message: formData.message,
-          cellphone: formData.cellphone
-
-        }),{
-          loading: 'Enviando consulta...',
-          success: 'Consulta enviada con éxito. ¡Gracias por contactarme!',
-          error: 'Error al enviar la consulta. Por favor, intentá nuevamente.'
-        }
-      )
-
+    toast.promise(
+      api.post('/send-email', {
+        name: formData.name,
+        lastname: formData.lastname,
+        email: formData.email,
+        message: formData.message,
+        cellphone: formData.cellphone
+      }),
+      {
+        loading: 'Enviando consulta...',
+        success: 'Consulta enviada con éxito. ¡Gracias por contactarme!',
+        error: 'Error al enviar la consulta. Por favor, intentá nuevamente.'
+      }
+    ).then(() => {
       setFormData({
         name: '',
         lastname: '',
         cellphone: '',
         email: '',
         message: ''
-      })
+      });
       setErrors({});
-    
-    }catch(error){
-      console.error('Error al enviar la consulta:', error);
-    }finally{
       setIsLoading(false);
-    }  
- 
+    }).catch(() => {
+      setIsLoading(false);
+    });
   }
 
   return (

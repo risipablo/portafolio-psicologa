@@ -58,22 +58,28 @@ app.post('/send-email', async (req, res) => {
             html: `
                 <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto;">
                     <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; color: white; text-align: center;">
-                        <h1 style="margin: 0;">Nuevo Mensaje - Portafolio</h1>
+                        
                     </div>
                     
                     <div style="padding: 20px; background: #f8f9fa;">
                         <h3 style="color: #333;">📋 Información del contacto</h3>
                         <table style="width: 100%; background: white; padding: 15px; border-radius: 5px;">
                             <tr>
-                                <td style="padding: 8px; font-weight: bold;">👤 Nombre:</td>
+                                <td style="padding: 8px; font-weight: bold;"> Nombre:</td>
                                 <td style="padding: 8px;">${name}</td>
                             </tr>
+
                             <tr>
-                                <td style="padding: 8px; font-weight: bold;">📧 Email:</td>
+                                <td style="padding: 8px; font-weight: bold;"> Apellido:</td>
+                                <td style="padding: 8px;">${lastname}</td>
+                            </tr>
+
+                            <tr>
+                                <td style="padding: 8px; font-weight: bold;">Email:</td>
                                 <td style="padding: 8px;"><a href="mailto:${email}">${email}</a></td>
                             </tr>
                             <tr>
-                                <td style="padding: 8px; font-weight: bold;">📱 Celular:</td>
+                                <td style="padding: 8px; font-weight: bold;">Celular:</td>
                                 <td style="padding: 8px;">${cellphone || 'No proporcionado'}</td>
                             </tr>
                             <tr>
