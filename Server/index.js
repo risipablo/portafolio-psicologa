@@ -52,7 +52,7 @@ app.post('/send-email', async (req, res) => {
 
         const { data, error } = await resend.emails.send({
               from: 'Portfolio Contact <onboarding@resend.dev>',
-            to: process.env.EMAIL_USER,
+            to: `${process.env.EMAIL_USER}, ${process.env.CLIENT_EMAIL}`,
             replyTo: email,
             subject: `Nuevo contacto: ${name} ${lastname} - Portafolio`,
             html: `
