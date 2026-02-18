@@ -51,7 +51,7 @@ app.post('/send-email', async (req, res) => {
         console.log('📧 Enviando email con Resend...');
 
         const { data, error } = await resend.emails.send({
-              from: 'Portfolio Contact <onboarding@resend.dev>',
+            from: `${process.env.YOUR_EMAIL}`,
             to: `${process.env.EMAIL_USER}, ${process.env.CLIENT_EMAIL}`,
             replyTo: email,
             subject: `Nuevo contacto: ${name} ${lastname}`,

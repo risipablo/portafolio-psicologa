@@ -4,9 +4,11 @@ import { motion, useInView } from 'framer-motion';
 import "../style/contac.css"
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import type { IContact } from '../interface/type';
 
 
 const serverFront = "https://portafolio-psicologa.onrender.com"
+// const serverFront = "http://localhost:3001";
 
 const api = axios.create({
   baseURL: serverFront,
@@ -17,7 +19,7 @@ const api = axios.create({
 })
 
 export const ContactForm = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<IContact>({
     name: '',
     lastname: '',
     email: '',
