@@ -54,7 +54,7 @@ app.post('/send-email', async (req, res) => {
               from: 'Portfolio Contact <onboarding@resend.dev>',
             to: `${process.env.EMAIL_USER}, ${process.env.CLIENT_EMAIL}`,
             replyTo: email,
-            subject: `Nuevo contacto: ${name} ${lastname} - Portafolio`,
+            subject: `Nuevo contacto: ${name} ${lastname}`,
             html: `
                 <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto;">
                     <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; color: white; text-align: center;">

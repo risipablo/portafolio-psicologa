@@ -5,6 +5,7 @@ import "../style/contac.css"
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
+
 const serverFront = "https://portafolio-psicologa.onrender.com"
 
 const api = axios.create({
@@ -17,11 +18,11 @@ const api = axios.create({
 
 export const ContactForm = () => {
   const [formData, setFormData] = useState({
-    nombre: '',
-    apellido: '',
-    celular: '',
+    name: '',
+    lastname: '',
     email: '',
-    consulta: ''
+    message: '',
+    cellphone: ''
   });
 
   const ref = useRef(null);
@@ -43,11 +44,11 @@ export const ContactForm = () => {
     setIsLoading(true);
 
     const newErrors: Record<string, string> = {};
-    if (!formData.nombre.trim()) newErrors.nombre = 'El nombre es requerido';
-    if (!formData.apellido.trim()) newErrors.apellido = 'El apellido es requerido';
-    if (!formData.celular.trim()) newErrors.celular = 'El celular es requerido';
+    if (!formData.name.trim()) newErrors.name = 'El nombre es requerido';
+    if (!formData.lastname.trim()) newErrors.lastname = 'El apellido es requerido';
+    if (!formData.cellphone.trim()) newErrors.cellphone = 'El celular es requerido';
     if (!formData.email.trim()) newErrors.email = 'El email es requerido';
-    if (!formData.consulta.trim()) newErrors.consulta = 'La consulta es requerida';
+    if (!formData.message.trim()) newErrors.message = 'La consulta es requerida';
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -58,11 +59,11 @@ export const ContactForm = () => {
     try{
        toast.promise(
         api.post('/send-email', {
-          name: formData.nombre,
-          lastname: formData.apellido,
+          name: formData.name,
+          lastname: formData.lastname,
           email: formData.email,
-          message: formData.consulta,
-          cellphone: formData.celular
+          message: formData.message,
+          cellphone: formData.cellphone
 
         }),{
           loading: 'Enviando consulta...',
@@ -72,11 +73,11 @@ export const ContactForm = () => {
       )
 
       setFormData({
-        nombre: '',
-        apellido: '',
-        celular: '',
+        name: '',
+        lastname: '',
+        cellphone: '',
         email: '',
-        consulta: ''
+        message: ''
       })
       setErrors({});
     
@@ -132,14 +133,14 @@ export const ContactForm = () => {
             <input
               type="text"
               id="nombre"
-              name="nombre"
-              value={formData.nombre}
+              name="name"
+              value={formData.name}
               onChange={handleChange}
               required
               placeholder="Tu nombre"
-              className={errors.nombre ? 'error' : ''}
+              className={errors.name ? 'error' : ''}
             />
-            {errors.nombre && <span className="error-message">{errors.nombre}</span>}
+            {errors.name && <span className="error-message">{errors.name}</span>}
           </div>
 
           <div className="form-group">
@@ -147,14 +148,14 @@ export const ContactForm = () => {
             <input
               type="text"
               id="apellido"
-              name="apellido"
-              value={formData.apellido}
+              name="lastname"
+              value={formData.lastname}
               onChange={handleChange}
               required
               placeholder="Tu apellido"
-              className={errors.apellido ? 'error' : ''}
+              className={errors.lastname ? 'error' : ''}
             />
-            {errors.apellido && <span className="error-message">{errors.apellido}</span>}
+            {errors.lastname && <span className="error-message">{errors.lastname}</span>}
           </div>
         </motion.div>
 
@@ -168,14 +169,14 @@ export const ContactForm = () => {
           <input
             type="tel"
             id="celular"
-            name="celular"
-            value={formData.celular}
+            name="cellphone"
+            value={formData.cellphone}
             onChange={handleChange}
             required
             placeholder="+54 9 11 1234-5678"
-            className={errors.celular ? 'error' : ''}
+            className={errors.cellphone ? 'error' : ''}
           />
-          {errors.celular && <span className="error-message">{errors.celular}</span>}
+          {errors.cellphone && <span className="error-message">{errors.cellphone}</span>}
         </motion.div>
 
         <motion.div 
@@ -207,15 +208,15 @@ export const ContactForm = () => {
           <label htmlFor="consulta">Consulta *</label>
           <textarea
             id="consulta"
-            name="consulta"
-            value={formData.consulta}
+            name="message"
+            value={formData.message}
             onChange={handleChange}
             required
             placeholder="Contame sobre tu consulta o motivo de contacto..."
             rows={6}
-            className={errors.consulta ? 'error' : ''}
+            className={errors.message ? 'error' : ''}
           ></textarea>
-          {errors.consulta && <span className="error-message">{errors.consulta}</span>}
+          {errors.message && <span className="error-message">{errors.message}</span>}
         </motion.div>
 
         <motion.button 
