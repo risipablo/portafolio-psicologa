@@ -18,8 +18,6 @@
     border-bottom: 1px solid rgba(24, 24, 24, 0.3);
 }
 
-
-
 .logo-container {
     flex: 0 0 auto;
     display: flex;
@@ -42,7 +40,6 @@
     transform: translateX(0);
 }
 
-
 .menu a {
     font-family: 'Poppins', sans-serif;
     text-decoration: none;
@@ -52,25 +49,11 @@
     padding: 4px 8px;
     letter-spacing: 2px;
     color: #030303;
-
 }
 
 .menu a:hover{
     transition: .4s;
     color:rgba(50, 50, 51, 0.5);
-    
-}
-
-.user-container {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-}
-
-.user-mobile {
-    display: none;
 }
 
 .menu-icon {
@@ -84,7 +67,6 @@
     width: 25px;
     background-color: #18181a;
     margin: 4px 0;
-   
 }
 
 .menu-icon.open span:nth-child(1) {
@@ -99,17 +81,30 @@
     transform: rotate(-45deg) translate(8px, -6px);
 }
 
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    animation: fadeIn 0.3s ease-in-out;
+}
 
-/* .active {
-    color:#3570f0fb;
-    body.dark & {
-        color:#1e5bdffb;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
     }
-} */
+    to {
+        opacity: 1;
+    }
+}
 
 @media (max-width: 850px) {
     .navbar{
-        padding: 1rem;
+        padding: .3rem 1rem;
     }
 
     .navbar:hover {
@@ -121,57 +116,38 @@
     }
 
     .menu {
-        display: none;
+        display: flex;
         right: 0;
-        left: 0;
         flex-direction: column;
-        width: 100%;
+        width: 90%;
         height: 100vh;
-        position: absolute;
-        top: 100%;
-        background: rgba(24, 24, 24, 0.8);
-        backdrop-filter: blur(6px);
+        position: fixed;
+        top: 0;
+        background: #ffffff;
         justify-content: flex-start;
-        padding-top: 2rem;
+        padding-top: 6rem;
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out;
+        z-index: 1001;
     }
 
     .menu.open {
-        display: flex;
+        transform: translateX(0);
     }
 
     .menu a {
-        margin: 1rem auto;
+        margin: 1.5rem auto;
         padding: 8px 0px;
-        font-size: 1.6rem;
-        color: #e9e7e7;
+        font-size: 1.3rem;
+        color: #030303;
     }
 
     .menu a:hover{
         color: #a4a2a2;
     }
 
-
-    /* Ocultar user de desktop en mobile */
-    .user-container {
-        display: none;
-    }
-
-    
-    .user-mobile {
-        display: block;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 600;
-        font-size: 1.8rem;
-        margin-top: auto;
-        margin-bottom: 3rem;
-        color: #e9e7e7;
-        
-        body.dark & {
-            color: #19191a;
-        }
-    }
-
     .menu-icon {
         display: flex;
+        z-index: 1002;
     }
 }

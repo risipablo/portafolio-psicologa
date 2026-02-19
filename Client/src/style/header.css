@@ -1,13 +1,13 @@
 .container-header {
-    position: relative; /* importante */
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    min-height: 80vh;
+    min-height: 85vh;
     margin: 4.4rem auto;
     padding: 2rem 1rem;
-    overflow: hidden; /* evita que el blur se desborde */
+    overflow: hidden; 
     box-sizing: border-box;
     font-family: "Playwrite NZ Basic", cursive;
     background: rgba(0, 0, 0, 0.3);
@@ -21,10 +21,8 @@
     background-image: url("../assets/images/psicologa/ps6.jpeg");
     background-size: cover;
     background-position: center;
-
-    filter: blur(3px); /* ← ajustá intensidad acá */
-    transform: scale(1.1); /* evita bordes blancos por el blur */
-
+    filter: blur(3px); 
+    transform: scale(1.1); 
     z-index: -1;
 }
 
@@ -77,16 +75,14 @@
     margin: 1rem auto .2rem;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
     .container-header {
         flex-direction: column;
-        min-height: 70vh;
-        padding: 2rem 1rem;
-        gap: 1.5rem;
+        margin: 4rem auto;
     }
     
     .container-image img {
-        margin: 0 0 0 12rem;
+        margin: 0 0 0 8rem;
         width: 120px;
         height: 120px;
     }
@@ -101,10 +97,12 @@
 }
 
 @media (max-width: 450px) {
+    .container-header{
+        min-height: 70vh;
+    }
     .container-image img {
-        margin: 0 0 2.5rem 12rem;
-        width: 100px;
-        height: 100px;
+        margin: 0;
+        
     }
 
     .info{

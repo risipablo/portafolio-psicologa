@@ -1,9 +1,8 @@
-
 import { useState } from "react"
 import logo from "../assets/svg/logo.svg"
 import { NavLink } from "react-router-dom"
 import "../style/navbar.css"
-// import logo2 from "../assets/images/logo.png"
+
 
 export const Navbar = () => {
     const [isMenu, setIsMenu] = useState(false)
@@ -16,10 +15,11 @@ export const Navbar = () => {
         setIsMenu(false)
     }
 
-
-
     return(
         <div className="container-navbar">
+            {/* Overlay oscuro */}
+            {isMenu && <div className="overlay" onClick={closeMenu}></div>}
+            
             <div className="navbar">
 
                 <div className="logo-container">
@@ -44,17 +44,12 @@ export const Navbar = () => {
                         Contacto
                     </NavLink>
 
-                    <div className="user-mobile">
-                        User
-                    </div>
-
+              
                 </div>
 
-                {/* <div className="user-container">
-                    User
-                </div> */}
+ 
 
-                <div className="menu-icon" onClick={toggleMenu} >
+                <div className={`menu-icon ${isMenu ? 'open' : ''}`} onClick={toggleMenu} >
                     <span></span>
                     <span></span>
                     <span></span>
