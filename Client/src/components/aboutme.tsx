@@ -9,7 +9,8 @@ export const AboutMe = () => {
     const isInView = useInView(ref, { once: true, margin: "-100px" })
 
     return(
-        <motion.div 
+        <motion.section
+            id="sobre-mi" 
             className="container-about"
             ref={ref}
             initial={{ opacity: 0 }}
@@ -65,6 +66,6 @@ export const AboutMe = () => {
 
                 
             </div>
-        </motion.div>
+        </motion.section>
     )
 }

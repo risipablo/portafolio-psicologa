@@ -9,6 +9,7 @@ export const LocationMap = () => {
 
   return (
     <motion.div 
+      id='ubicacion'
       className="container-location"
       ref={ref}
       initial={{ opacity: 0 }}

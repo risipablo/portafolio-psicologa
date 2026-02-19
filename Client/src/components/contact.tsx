@@ -87,7 +87,8 @@ export const ContactForm = () => {
   }
 
   return (
-    <motion.div 
+    <motion.div
+      id='contacto' 
       className="container-contact"
       ref={ref}
       initial={{ opacity: 0 }}

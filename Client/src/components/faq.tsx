@@ -34,6 +34,7 @@ export const FAQ = () => {
   return (
     <motion.div 
       className="container-faq"
+      id='preguntas'
       ref={ref}
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
