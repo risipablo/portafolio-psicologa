@@ -29,7 +29,7 @@
 }
 
 .logo-container img {
-    height: 70px;
+    height: 60px;
     width: auto;
     transition: transform 0.3s ease;
 }
@@ -222,7 +222,7 @@
 /* RESPONSIVE MOBILE */
 @media (max-width: 850px) {
     .navbar {
-        padding: 0.5rem 1rem;
+        padding: 0 1rem;
     }
 
     .logo-container img {
@@ -337,7 +337,7 @@
         padding-left: 2.5rem;
     }
 
-    /* MENU ICON MOBILE */
+    
     .menu-icon {
         display: flex;
     }

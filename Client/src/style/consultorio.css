@@ -30,9 +30,7 @@ border-radius: 2px;
 margin: 0 auto;
 }
 
-body.dark .underline-consultorio {
-background: linear-gradient(90deg, #1e5bdffb, #3570f0fb);
-}
+
 
 .description-consultorio {
 font-family: 'Poppins', sans-serif;
@@ -44,20 +42,18 @@ max-width: 800px;
 margin: 0 auto 3rem;
 }
 
-body.dark .description-consultorio {
-color: #d4d4d4;
-}
 
-/* CORREGIDO: Removido box-shadow y ajustado */
+
+
 .carousel-container {
 position: relative;
 width: 100%;
-max-width: 600px; /* Reducido para ajustar al ancho de imagen */
+max-width: 600px; 
 margin: 0 auto;
-overflow: visible; /* Cambiado de hidden a visible */
+overflow: visible;
 }
 
-/* CORREGIDO: Removido min-height y ajustado */
+
 .carousel-image-container {
 position: relative;
 width: 100%;
@@ -66,7 +62,7 @@ overflow: hidden;
 display: flex;
 align-items: center;
 justify-content: center;
-background: transparent; /* Asegura fondo transparente */
+background: transparent; 
 }
 
 .carousel-slide {
@@ -169,7 +165,7 @@ height: 14px;
 
 @media (max-width: 850px) {
 .container-consultorio {
-  margin: 2.5rem auto;
+  margin: 3rem auto;
   padding: 1.5rem;
 }
 
@@ -202,7 +198,7 @@ height: 14px;
 
 @media (max-width: 500px) {
 .container-consultorio {
-  margin: 2.5rem auto;
+  margin: 3rem auto;
   padding: 1.5rem;
 }
 
@@ -219,9 +215,9 @@ height: 14px;
   height: 35px;
 }
 
-/* Flechas aún más pegadas en pantallas pequeñas */
+
 .carousel-button-left {
-  left: 5px; /* Dentro de la imagen en mobile */
+  left: 5px; 
 }
 
 .carousel-button-right {
