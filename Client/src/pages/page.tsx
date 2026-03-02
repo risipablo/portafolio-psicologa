@@ -12,6 +12,7 @@ import { ScrollTop } from "../utils/scrolltop"
 import { Whatsapp } from "../utils/whatsapp"
 import { Instagram } from "../utils/instagram"
 import { Talleres } from "../components/servicios/talleres"
+import { ServiceDetail } from "../components/servicios/serviceDetail"
 
 
 export const Page = () => {
@@ -32,8 +33,10 @@ export const Page = () => {
                         <Footer/>
                     </>
                 }/>
-                <Route path="/section/:id"/>
+               
                 <Route path="/talleres" element={<Talleres/>}/>
+                <Route path="/:id" element={<ServiceDetail/>}/>
+                <Route path="/section/:id" element={<ServiceDetail/>} />
             </Routes>
 
             <ScrollTop/>

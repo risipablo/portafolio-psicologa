@@ -10,8 +10,6 @@ import asesoria from "../assets/images/psicologa/ps5.jpeg"
 import forma from "../assets/images/forma2.jpeg"
 import tera2 from "../assets/images/psicologa/ps14.jpeg"
 import integr from "../assets/images/integra.jpeg"
-
-
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
@@ -24,7 +22,7 @@ export const ServiceGrid = () => {
     const [flippedCard, setFlippedCard] = useState<number | null>(null);
 
     const services = [
-        {id:1, title:"Psicoterapia", image:image1, image2:tera2, descrip: ""},
+        {id:1, title:"Psicoterapia", image:image1, image2:tera2, descrip: "", route:"/psicoterapia"},
         {id:2, title:"Asesorias",   image2:image5,image:asesoria},
         {id:3, title:"Psicoterapia Integrativa", image:image6, image2:integr},
         {id:4, title:"Talleres", image:image3, image2:taller2,descrip:"Talleres grupales de bienestar y crecimiento personal. Te invito a conocerlos.", route:"/talleres"},
@@ -54,43 +52,49 @@ export const ServiceGrid = () => {
             </motion.div>
 
             <div className='service-grid'>
-                {services.map((service, index) => (
-                    <motion.div 
-                        key={index}
-                        className={`icon-card ${flippedCard === index ? 'flipped' : ''}`}
-                        initial={{ opacity: 0, y: 40 }}
-                        animate={isInView ? { opacity: 1, y: 0 } : {}}
-                        transition={{
-                            duration: 0.5,
-                            delay: index * 0.12,
-                            ease: "easeOut"
-                        }}
-                        onClick={() => handleCardClick(index)}
-                    >
-                        <div className="card-inner">
-                            <div className="card-front">
-                                <img src={service.image} alt={service.title} />
-                                <h3>{service.title}</h3>
+                {services.map((service, index) => {
+                    return (
+                        <motion.div
+                            key={index}
+                            className={`icon-card ${flippedCard === index ? 'flipped' : ''}`}
+                            initial={{ opacity: 0, y: 40 }}
+                            animate={isInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{
+                                duration: 0.5,
+                                delay: index * 0.12,
+                                ease: "easeOut"
+                            }}
+                            onClick={() => handleCardClick(index)}
+                        >
+                            <div className="card-inner">
+                                <div className="card-front">
+                                    <img src={service.image} alt={service.title} />
+                                    <div>
+                                        <h3>{service.title}</h3>
+                                        <h5> (Haz click para más info)</h5>
+                                    </div>
+
+                                </div>
+
+                                <div className="card-back">
+                                    <img src={service.image2} alt="" className="card-back-image" />
+                                    <div className="card-back-overlay"></div>
+                                    <p>{service.descrip}</p>
+                                    <button className="card-back-button">
+                                        <NavLink
+                                            to={service.route || `/section/${service.id}`}
+                                            className="button-link"
+                                            onClick={(e) => e.stopPropagation()}
+                                        >
+                                            <Eye size={20} />
+                                            <span>Ver más</span>
+                                        </NavLink>
+                                    </button>
+                                </div>
                             </div>
-                            
-                            <div className="card-back">
-                                <img src={service.image2} alt="" className="card-back-image" />
-                                <div className="card-back-overlay"></div>
-                                <p>{service.descrip}</p>
-                                <button className="card-back-button">
-                                    <NavLink 
-                                        to={service.route || `/section/${service.id}`} 
-                                        className="button-link"
-                                        onClick={(e) => e.stopPropagation()}
-                                    >
-                                        <Eye size={20} />
-                                        <span>Ver más</span>
-                                    </NavLink>
-                                </button>
-                            </div>
-                        </div>
-                    </motion.div>
-                ))}
+                        </motion.div>
+                    )
+                })}
             </div>
         </motion.div>
     )

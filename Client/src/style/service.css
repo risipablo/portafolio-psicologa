@@ -55,7 +55,48 @@
     display: block;
 }
 
+.card-front > div {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 12px; /* Reducimos un poco el padding para que quepan ambos */
+    background: rgba(46, 46, 46, 0.8);
+    text-align: center;
+    
+    /* Animación que antes tenía el h3 */
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.icon-card:hover .card-front > div {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.icon-card h3, 
+.icon-card h5 {
+    font-family: 'Smooch Sans', sans-serif;
+    color: #fff;
+    margin: 0;
+    line-height: 1.2; /* Ajustamos el interlineado */
+}
+
 .icon-card h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.icon-card h5 {
+    display: none; /* Oculto por defecto en Desktop */
+    font-size: 1.1rem; /* Un poco más pequeño que el h3 */
+    font-weight: 400;
+    margin-top: 4px;
+}
+
+/* .icon-card h3 {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -77,6 +118,10 @@
 .icon-card:hover h3 {
     opacity: 1;
     transform: translateY(0);
+} */
+
+.icon-card h5{
+    display: none;
 }
 
 .card-inner {
@@ -203,18 +248,35 @@
         padding: 1.5rem;
     }
     
-    .icon-card h3 {
+    .card-front > div {
+        opacity: 1;
+        transform: translateY(0);
+        padding: 10px;
+    }
+
+   .icon-card h3 {
+        font-size: 1.5rem; 
+        letter-spacing: 2px;
+    }
+
+    .icon-card h5 {
+        display: block; 
+        font-size: 1rem;
+        letter-spacing: 1px;
+        color: rgba(255, 255, 255, 0.9); 
+    }
+}
+
+/* @media (max-width: 850px){
+    .icon-card h5{
+        display: flex;
         opacity: 1;
         transform: translateY(0);
         font-size: 1.5rem;
         letter-spacing: 2px;
+        
     }
-
-    .icon-card:hover h3 {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+} */
 
 @media (max-width: 500px) {
     .service-grid {
