@@ -15,7 +15,9 @@ import { Talleres } from "../components/servicios/talleres"
 import { ServiceDetail } from "../components/servicios/serviceDetail"
 
 
+
 export const Page = () => {
+   
 
     return(
         <BrowserRouter>

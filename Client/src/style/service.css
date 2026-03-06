@@ -14,7 +14,7 @@
     color: #030303;
     margin: 0 auto 1rem;
     position: relative;
-    /* display: inline-block; */
+    /* display: none; */
     text-align: center;
     
 }
@@ -267,16 +267,11 @@
     }
 }
 
-/* @media (max-width: 850px){
-    .icon-card h5{
-        display: flex;
-        opacity: 1;
-        transform: translateY(0);
-        font-size: 1.5rem;
-        letter-spacing: 2px;
-        
+@media (max-width: 320px){
+    .title-grid h2 {
+        font-size: 1.3rem;
     }
-} */
+}
 
 @media (max-width: 500px) {
     .service-grid {

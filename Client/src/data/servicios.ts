@@ -11,7 +11,7 @@ export const Servicios_Data = {
         services2:[
             {
                 title1:"Neurorehabilitación Psicológica ",
-                title2:"Infantes - Juveniles",
+                title2:"Infanto - Juvenil",
                 text1b:"El tratamiento de Neurorehabilitación en Psicología Infantil acompaña a niños, niñas y adolescentes con discapacidad a desarrollar sus habilidades emocionales, cognitivas y sociales. A través de actividades adaptadas y con un enfoque lúdico‑terapéutico, se trabajan áreas como la atención, el lenguaje, la regulación emocional y la interacción con otros. El objetivo es potenciar su autonomía, fortalecer sus capacidades y favorecer un desarrollo integral respetando el ritmo y las necesidades de cada niñ@."
             }
         ]

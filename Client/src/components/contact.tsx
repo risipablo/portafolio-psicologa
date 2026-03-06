@@ -1,11 +1,10 @@
 import { useState, type ChangeEvent, type FormEvent, useRef } from 'react';
 import { Send } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
-import "../style/contac.css"
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import type { IContact } from '../interface/type';
-
+import "../style/contac.css"
 
 const serverFront = "https://portafolio-psicologa.onrender.com"
 

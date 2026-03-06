@@ -2,6 +2,7 @@
     padding: 2rem;
     max-width: 1200px;
     margin: 6rem auto;
+    
 }
 
 .title-contact {
@@ -228,7 +229,7 @@ body.dark .submit-button:hover {
   }
   
   .contact-form {
-    padding: 1.5rem;
+    /* padding: 1.5rem; */
     gap: 1rem;
   }
   

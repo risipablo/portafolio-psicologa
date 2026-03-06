@@ -1,10 +1,14 @@
 import "../style/aboutMe.css"
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
-import { useRef } from "react"
+import { useEffect, useRef } from "react"
 import image1 from "../../src/assets/images/sr4.jpeg"
 
 export const AboutMe = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+    
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true, margin: "-100px" })
 
