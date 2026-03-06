@@ -1,33 +1,22 @@
 import { useParams } from "react-router-dom"
+import { useEffect } from "react"
 import { Servicios_Data } from "../../data/servicios"
-// import { useRef } from "react"
 import { motion } from "framer-motion";
 import "../../style/astrologia.css"
 
 export const ServiceDetail = () => {
 
     const {id} = useParams<{id:string}>()
+    
+    
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [id]);
+
     const service = Servicios_Data[id as keyof typeof Servicios_Data]
     if(!service) return <p> Servicio no encontrado </p>
 
     const Icon = service.icon
-
-    // const ref1 = useRef(null);
-    // const ref2 = useRef(null);
-    // const ref3 = useRef(null);
-
-    // const isInView1 = useInView(ref1, { once: true, margin: "-100px" });
-    // const isInView2 = useInView(ref2, { once: true, margin: "-100px" });
-    // const isInView3 = useInView(ref3, { once: true, margin: "-100px" });
-
-    // const itemVariants = {
-    //     hidden: { opacity: 0, x: -20 },
-    //     visible: {
-    //         opacity: 1,
-    //         x: 0,
-    //         transition: { duration: 0.5 }
-    //     }
-    // };
 
     return(
         <div className="talleres-container">
@@ -42,9 +31,7 @@ export const ServiceDetail = () => {
 
             <motion.section 
                 className="taller-card"
-                // ref={ref1}
                 initial="hidden"
-                // animate={isInView1 ? "visible" : "hidden"}
             >
                 <div className="taller-header">
                     <span className="taller-icon">
@@ -60,23 +47,18 @@ export const ServiceDetail = () => {
                     
                 <p 
                     className="taller-description"
-                    // variants={itemVariants}
                 >
                     <p>{service.text1}</p>
                 </p>
 
-
                 <p 
                     className="taller-description"
-                    // variants={itemVariants}
                 >
                     {service.text2}
                 </p>
-                
 
                 <p 
                     className="taller-description"
-                    // variants={itemVariants}
                 >
                     {service.text3}
                 </p>
@@ -84,36 +66,33 @@ export const ServiceDetail = () => {
             </motion.section>
                 
 
-                {
-                service.services2.map((item,idx) => (
-                    <section 
-                    className="taller-card"
-                    key={idx}> 
+            {
+            service.services2.map((item,idx) => (
+                <section 
+                className="taller-card"
+                key={idx}> 
 
-                        <div className="taller-header">
-                            <span className="taller-icon">
-                                <Icon />
-                            </span>
-                            <h2>{item.title1} </h2>
-                        </div>
+                    <div className="taller-header">
+                        <span className="taller-icon">
+                            <Icon />
+                        </span>
+                        <h2>{item.title1} </h2>
+                    </div>
 
-                        
-                        <div className="taller-header">
-                        <h3 >{service.title2}</h3>
-                        </div>
                     
-                        <p 
-                    className="taller-description"
-                    // variants={itemVariants}
-                >
-                    <p>{service.text1}</p>
-                </p>
-
-                    </section>
-                ))
-            }
-
+                    <div className="taller-header">
+                    <h3 >{item.title2}</h3>
+                    </div>
                 
+                    <p 
+                        className="taller-description"
+                    >
+                        <p>{item.text1b}</p>
+                    </p>
+
+                </section>
+            ))
+            }
 
         </div>
     )

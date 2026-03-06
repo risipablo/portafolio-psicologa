@@ -1,7 +1,7 @@
 import { AstrologiaSlider } from "./slider/astrologiaSlider"
 import { motion } from "framer-motion";
 import { Sparkles, Heart, Users, ArrowRight } from "lucide-react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useInView } from "framer-motion";
 import "../../style/astrologia.css";
 
@@ -9,6 +9,10 @@ export const Talleres = () => {
     const ref1 = useRef(null);
     const ref2 = useRef(null);
     const ref3 = useRef(null);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     
     const isInView1 = useInView(ref1, { once: true, margin: "-100px" });
     const isInView2 = useInView(ref2, { once: true, margin: "-100px" });

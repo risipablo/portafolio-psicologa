@@ -1,4 +1,4 @@
-import perfil from "../assets/images/IMG-20251018-WA0010.jpg";
+import perfil from "../assets/images/logoB.jpg"
 import "../style/header.css";
 import { motion } from "framer-motion";
 
