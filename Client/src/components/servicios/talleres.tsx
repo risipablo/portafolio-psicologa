@@ -4,6 +4,7 @@ import { Sparkles, Heart, Users, ArrowRight } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { useInView } from "framer-motion";
 import "../../style/astrologia.css";
+import { BiodecoSlider } from "./slider/biodeco";
 
 export const Talleres = () => {
     const ref1 = useRef(null);
@@ -137,6 +138,7 @@ export const Talleres = () => {
                         </li>
                     </ul>
                 </motion.div>
+                <BiodecoSlider/>
             </motion.section>
 
             <motion.section 

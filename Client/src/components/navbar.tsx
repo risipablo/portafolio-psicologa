@@ -54,8 +54,8 @@ export const Navbar = () => {
                             <NavLink to="/psicoterapia" onClick={closeMenu} className="submenu-item">
                                 Psicoterapia
                             </NavLink>
-                            <NavLink to="/accesorios" onClick={closeMenu} className="submenu-item">
-                                Accesorios
+                            <NavLink to="/asesorias" onClick={closeMenu} className="submenu-item">
+                                Asesorias
                             </NavLink>
                             <NavLink to="/psicoterapia-integrativa" onClick={closeMenu} className="submenu-item">
                                 Psicoterapia Integrativa
