@@ -95,12 +95,13 @@ export const ContactForm = () => {
       transition={{ duration: 0.6 }}
     >
       <motion.div 
-        className="title-about"
+        className="title-contact"
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         <h2>Contacto</h2>
+        <div className="underline-contact"></div>
       </motion.div>
 
       <motion.p 
@@ -119,116 +120,120 @@ export const ContactForm = () => {
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
         transition={{ duration: 0.6, delay: 0.4 }}
       >
-        <motion.div 
-          className="form-row"
-          initial={{ opacity: 0, x: -20 }}
-          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-        >
-          <div className="form-group">
-            <label htmlFor="nombre">Nombre *</label>
+        <div className="form-left">
+          <motion.div 
+            className="form-row"
+            initial={{ opacity: 0, x: -20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
+            <div className="form-group">
+              <label htmlFor="nombre">Nombre *</label>
+              <input
+                type="text"
+                id="nombre"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                placeholder="Tu nombre"
+                className={errors.name ? 'error' : ''}
+              />
+              {errors.name && <span className="error-message">{errors.name}</span>}
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="apellido">Apellido *</label>
+              <input
+                type="text"
+                id="apellido"
+                name="lastname"
+                value={formData.lastname}
+                onChange={handleChange}
+                required
+                placeholder="Tu apellido"
+                className={errors.lastname ? 'error' : ''}
+              />
+              {errors.lastname && <span className="error-message">{errors.lastname}</span>}
+            </div>
+          </motion.div>
+
+          <motion.div 
+            className="form-group"
+            initial={{ opacity: 0, x: -20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
+            <label htmlFor="celular">Celular *</label>
             <input
-              type="text"
-              id="nombre"
-              name="name"
-              value={formData.name}
+              type="tel"
+              id="celular"
+              name="cellphone"
+              value={formData.cellphone}
               onChange={handleChange}
               required
-              placeholder="Tu nombre"
-              className={errors.name ? 'error' : ''}
+              placeholder="+54 9 11 1234-5678"
+              className={errors.cellphone ? 'error' : ''}
             />
-            {errors.name && <span className="error-message">{errors.name}</span>}
-          </div>
+            {errors.cellphone && <span className="error-message">{errors.cellphone}</span>}
+          </motion.div>
 
-          <div className="form-group">
-            <label htmlFor="apellido">Apellido *</label>
+          <motion.div 
+            className="form-group"
+            initial={{ opacity: 0, x: -20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
+          >
+            <label htmlFor="email">Email *</label>
             <input
-              type="text"
-              id="apellido"
-              name="lastname"
-              value={formData.lastname}
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
               onChange={handleChange}
               required
-              placeholder="Tu apellido"
-              className={errors.lastname ? 'error' : ''}
+              placeholder="tu@email.com"
+              className={errors.email ? 'error' : ''}
             />
-            {errors.lastname && <span className="error-message">{errors.lastname}</span>}
-          </div>
-        </motion.div>
+            {errors.email && <span className="error-message">{errors.email}</span>}
+          </motion.div>
+        </div>
 
-        <motion.div 
-          className="form-group"
-          initial={{ opacity: 0, x: -20 }}
-          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-        >
-          <label htmlFor="celular">Celular *</label>
-          <input
-            type="tel"
-            id="celular"
-            name="cellphone"
-            value={formData.cellphone}
-            onChange={handleChange}
-            required
-            placeholder="+54 9 11 1234-5678"
-            className={errors.cellphone ? 'error' : ''}
-          />
-          {errors.cellphone && <span className="error-message">{errors.cellphone}</span>}
-        </motion.div>
+        <div className="form-right">
+          <motion.div 
+            className="form-group form-group-full"
+            initial={{ opacity: 0, x: 20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+          >
+            <label htmlFor="consulta">Consulta *</label>
+            <textarea
+              id="consulta"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              placeholder="Contame sobre tu consulta o motivo de contacto..."
+              rows={6}
+              className={errors.message ? 'error' : ''}
+            ></textarea>
+            {errors.message && <span className="error-message">{errors.message}</span>}
+          </motion.div>
 
-        <motion.div 
-          className="form-group"
-          initial={{ opacity: 0, x: -20 }}
-          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-          transition={{ duration: 0.5, delay: 0.7 }}
-        >
-          <label htmlFor="email">Email *</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            placeholder="tu@email.com"
-            className={errors.email ? 'error' : ''}
-          />
-          {errors.email && <span className="error-message">{errors.email}</span>}
-        </motion.div>
-
-        <motion.div 
-          className="form-group"
-          initial={{ opacity: 0, x: -20 }}
-          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-        >
-          <label htmlFor="consulta">Consulta *</label>
-          <textarea
-            id="consulta"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-            placeholder="Contame sobre tu consulta o motivo de contacto..."
-            rows={6}
-            className={errors.message ? 'error' : ''}
-          ></textarea>
-          {errors.message && <span className="error-message">{errors.message}</span>}
-        </motion.div>
-
-        <motion.button 
-          type="submit" 
-          className="submit-button"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5, delay: 0.9 }}
-          whileHover={{ scale: isLoading ? 1 : 1.02 }}
-          whileTap={{ scale: isLoading ? 1 : 0.98 }}
-          disabled={isLoading}
-        >
-          <Send size={20} />
-          <span>{isLoading ? 'Enviando...' : 'Enviar Consulta'}</span>
-        </motion.button>
+          <motion.button 
+            type="submit" 
+            className="submit-button"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: 0.9 }}
+            whileHover={{ scale: isLoading ? 1 : 1.02 }}
+            whileTap={{ scale: isLoading ? 1 : 0.98 }}
+            disabled={isLoading}
+          >
+            <Send size={20} />
+            <span>{isLoading ? 'Enviando...' : 'Enviar Consulta'}</span>
+          </motion.button>
+        </div>
       </motion.form>
     </motion.div>
   );

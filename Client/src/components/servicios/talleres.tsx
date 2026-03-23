@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import { useInView } from "framer-motion";
 import "../../style/astrologia.css";
 import { BiodecoSlider } from "./slider/biodeco";
+import { Taller3 } from "./slider/taller3";
 
 export const Talleres = () => {
     const ref1 = useRef(null);
@@ -199,6 +200,7 @@ export const Talleres = () => {
                         cuando tod@s son incluidos y cuando hay equilibrio en los vínculos.
                     </p>
                 </motion.div>
+                <Taller3/>
             </motion.section>
         </div>
     );
