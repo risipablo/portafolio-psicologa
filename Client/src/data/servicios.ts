@@ -41,7 +41,7 @@ export const Servicios_Data = {
         text3:"📌 El objetivo central no es solo aliviar síntomas, sino promover procesos de autorregulación, salud y bienestar sostenido, atendiendo las causas profundas del malestar.",
         text4:"📌 Integración de enfoques:",
         text5:"Se combinan modelos psicológicos (cognitivo-conductual, humanista, psicodinámico, sistémico, corporal, gestaltico, etc.) con técnicas complementarias (Astrología Terapeutica, Constelaciones Familiares, Biodescodificacion, Terapia Floral, PNL, Mindfulness, entre otras).",
-        text6:"*Beneficios de la Psicología Integrativa",
+        text6b:"*Beneficios de la Psicología Integrativa",
         list2:"✅ Abordaje más profundo y personalizado del malestar psicológico. ✅ Mejora de la autorregulación emocional y corporal. ✅ Reducción del estrés crónico y sus efectos psicosomáticos. ✅ Mayor adherencia a los tratamientos. ✅ Promoción de autonomía y recursos internos ✅ Enfoque preventivo y de largo plazo",
         text7:"Muchas personas afirman no solo alivio sintomático, sino mayor comprensión de sí mismas y cambios sostenidos en su calidad de vida"
     },
@@ -62,5 +62,25 @@ export const Servicios_Data = {
         text6:"El encuadre se define en función de las necesidades específicas de cada institución.",
         text7:"Si pensás que tú empresa o lugar de trabajo presenta algún tipo de malestar, conflicto, dificultad en la organización o límites para crecer y avanzar! ",
         text8:"Te invito a qué puedas realizar una consulta de Asesoría Psicología Organizacional "
+    }
+}
+
+
+export const Servicios_Meta = {
+    "psicoterapia": {
+        title: "Psicoterapia | Sabrina Ramos Lic. en Psicología",
+        description: "Espacio profesional de acompañamiento terapéutico para adultos y adolescentes."
+    },
+    "biosalud-integrativa": {
+        title: "Biosalud Integrativa | Sabrina Ramos Lic. en Psicología",
+        description: "Abordaje integral de salud y bienestar combinando medicina y psicología."
+    },
+    "psicoterapia-integrativa": {
+        title: "Psicología Integrativa | Sabrina Ramos Lic. en Psicología",
+        description: "Enfoque terapéutico que integra cuerpo, mente, emociones y contexto social."
+    },
+    "asesorias": {
+        title: "Asesorías Psicológicas | Sabrina Ramos Lic. en Psicología",
+        description: "Asesoramiento psicológico para organizaciones, empresas e instituciones."
     }
 }

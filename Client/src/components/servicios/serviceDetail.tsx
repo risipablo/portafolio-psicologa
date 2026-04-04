@@ -1,9 +1,11 @@
 import { useParams } from "react-router-dom"
 import { useEffect } from "react"
-import { Servicios_Data } from "../../data/servicios"
+import {Servicios_Data} from "../../data/servicios"
+import { Servicios_Meta } from "../../data/servicios";
 import { motion } from "framer-motion";
 import "../../style/astrologia.css"
 import { SliderMaster } from "./slider/sliderMaster";
+import { Helmet } from "react-helmet-async";
 
 export const ServiceDetail = () => {
 
@@ -19,19 +21,31 @@ export const ServiceDetail = () => {
 
     const Icon = service.icon
 
-    // Type guard para biosalud integrativa
+    
     const isBiosalud = (srv: unknown): srv is typeof Servicios_Data["biosalud-integrativa"] => {
         return srv !== null && typeof srv === 'object' && 'title3' in srv && 'title4' in srv
     }
 
-    // Type guard para asesorías
+    
     const isAsesorias = (srv: unknown): srv is typeof Servicios_Data["asesorias"] => {
         return srv !== null && typeof srv === 'object' && 'text3' in srv && 'text4' in srv && 'list2' in srv
     }
 
+    
+    const isPsicologiaIntegrativa = (srv: unknown): srv is typeof Servicios_Data["psicoterapia-integrativa"] => {
+        return srv !== null && typeof srv === 'object' && 'text6b' in srv && 'list2' in srv && !('title2' in srv)
+    }
+
+    const meta = Servicios_Meta[id as keyof typeof Servicios_Meta]
 
     return (
+        
         <div className="talleres-container">
+            <Helmet>
+                <title>{meta?.title ?? "Servicios"}</title>
+                <meta name="description" content={meta?.description ?? ""} />
+            </Helmet>
+            
             <motion.div
                 className="talleres-hero"
                 initial={{ opacity: 0, y: -20 }}
@@ -61,7 +75,49 @@ export const ServiceDetail = () => {
                     </div>
                 )}
 
-                {isAsesorias(service) ? (
+                {isPsicologiaIntegrativa(service) ? (
+                    <>
+                        {service.text1 && <p className="taller-description">{service.text1}</p>}
+                        {service.text2 && <p className="taller-description">{service.text2}</p>}
+                        
+                        {/* Lista con técnicas integradas */}
+                        {'list1' in service && service.list1 && (
+                            <ul className="taller-list">
+                                {service.list1.split('🔸').filter(Boolean).map((item, idx) => (
+                                    <li key={idx}>
+                                        <span className="list-icon">🔸</span>
+                                        {item.trim()}
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+
+                        {/* Textos de integración */}
+                        {service.text3 && <p className="taller-description">{service.text3}</p>}
+                        {service.text4 && <p className="taller-description">{service.text4}</p>}
+                        {service.text5 && <p className="taller-description">{service.text5}</p>}
+
+                        {/* Sección de beneficios */}
+                        {service.text6b && (
+                            <div className="taller-section">
+                                <h4 className="benefits-title">{service.text6b}</h4>
+                                {service.list2 && (
+                                    <ul className="taller-list">
+                                        {service.list2.split('✅').filter(Boolean).map((item, idx) => (
+                                            <li key={idx}>
+                                                <span className="list-icon">✅</span>
+                                                {item.trim()}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </div>
+                        )}
+
+                        {/* Texto final */}
+                        {service.text7 && <p className="taller-description taller-highlight">{service.text7}</p>}
+                    </>
+                ) : isAsesorias(service) ? (
                     <>
                         {service.text1 && <p className="taller-description">{service.text1}</p>}
                         {service.text2 && <p className="taller-description">{service.text2}</p>}
@@ -181,9 +237,9 @@ export const ServiceDetail = () => {
                         {service.text2 && <p className="taller-description">{service.text2}</p>}
                         
 
-                        {'list1' in service && service.list1 && (
+                        {'list1' in service && typeof service.list1 === 'string' && service.list1 && (
                             <ul className="taller-list">
-                                {service.list1.split('🔸').filter(Boolean).map((item, idx) => (
+                                {service.list1.split('🔸').filter(Boolean).map((item: string, idx: number) => (
                                     <li key={idx}>
                                         <span className="list-icon">🔸</span>
                                         {item.trim()}
@@ -194,12 +250,16 @@ export const ServiceDetail = () => {
 
 
                         {service.text3 && <p className="taller-description">{service.text3}</p>}
-                        {'text4' in service && service.text4 && <p className="taller-description">{service.text4}</p>}
-                        {'text5' in service && service.text5 && <p className="taller-description">{service.text5}</p>}
+                        {'text4' in service && typeof service.text4 === 'string' && service.text4 && (
+                            <p className="taller-description">{service.text4}</p>
+                        )}
+                        {'text5' in service && typeof service.text5 === 'string' && service.text5 && (
+                            <p className="taller-description">{service.text5}</p>
+                        )}
 
-                        {'list2' in service && service.list2 && (
+                        {'list2' in service && typeof service.list2 === 'string' && service.list2 && (
                             <ul className="taller-list">
-                                {service.list2.split('✅').filter(Boolean).map((item, idx) => (
+                                {service.list2.split('✅').filter(Boolean).map((item: string, idx: number) => (
                                     <li key={idx}>
                                         <span className="list-icon">✅</span>
                                         {item.trim()}
@@ -208,8 +268,12 @@ export const ServiceDetail = () => {
                             </ul>
                         )}
 
-                        {'text6' in service && service.text6 && <p className="taller-description">{service.text6}</p>}
-                        {'text7' in service && service.text7 && <p className="taller-description">{service.text7}</p>}
+                        {'text6' in service && typeof service.text6 === 'string' && service.text6 && (
+                            <p className="taller-description">{service.text6}</p>
+                        )}
+                        {'text7' in service && typeof service.text7 === 'string' && service.text7 && (
+                            <p className="taller-description">{service.text7}</p>
+                        )}
                     </>
                 )}
             </motion.section>

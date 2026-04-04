@@ -56,7 +56,7 @@ export const Footer = () => {
           © {new Date().getFullYear()} Sabrina Ramos. Todos los derechos reservados.
         </p>
         <p className="footer-credits">
-          Creado por <a href="https://tu-portfolio.com" target="_blank" rel="noopener noreferrer">Tu Nombre</a>
+          {/* Creado por <a href="https://tu-portfolio.com" target="_blank" rel="noopener noreferrer">Tu Nombre</a> */}
         </p>
       </div>
     </footer>
