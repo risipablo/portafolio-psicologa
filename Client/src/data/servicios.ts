@@ -62,7 +62,18 @@ export const Servicios_Data = {
         text6:"El encuadre se define en función de las necesidades específicas de cada institución.",
         text7:"Si pensás que tú empresa o lugar de trabajo presenta algún tipo de malestar, conflicto, dificultad en la organización o límites para crecer y avanzar! ",
         text8:"Te invito a qué puedas realizar una consulta de Asesoría Psicología Organizacional "
-    }
+    },
+        "formaciones":{
+            title1: "Espacio de Supervisión Clínica y Profesional",
+            icon: BrainCircuit,
+            text1: "Cuento con más de 15 años de trayectoria en el ejercicio de la Psicología, acompañando procesos terapéuticos y participando activamente en espacios de reflexión clínica. Desde esta experiencia, ofrezco un espacio de supervisión profesional destinado a colegas que deseen sostener, revisar y enriquecer su práctica.",
+            text2: "Este espacio está dirigido a psicólog@s y también a otr@s profesionales de la salud mental, como Acompañantes Terapéutic@s y Coach, que trabajen en el acompañamiento de personas y procesos subjetivos, y que reconozcan la importancia de contar con un espacio de análisis y reflexión sobre su práctica.",
+            text3: "La supervisión es un dispositivo fundamental para pensar los casos, revisar intervenciones, trabajar impasses, elaborar resonancias personales y fortalecer el posicionamiento ético y profesional. Se trata de un espacio de intercambio, cuidado y construcción conjunta, donde la escucha, el respeto y la confidencialidad son pilares centrales.",
+            text4: "Está orientado tanto a profesionales en formación como a quienes ya cuentan con experiencia, y buscan repensar su práctica, ampliar la mirada y seguir creciendo profesionalmente. Las mismas pueden ser grupales o individuales.",
+            listTitle: "Los tres pilares del ejercicio profesional",
+            list1: "🔸 1. Formación: La formación teórica y técnica constituye la base del ejercicio profesional. Es un proceso continuo que no se agota en el título, sino que se enriquece con capacitaciones, lecturas, espacios de estudio y actualización permanente. 🔸 2. Terapia personal: La terapia personal es un requisito indispensable. Permite trabajar la propia implicación subjetiva, diferenciar lo personal de lo profesional y cuidar tanto a quien ejerce como a quienes acompaña. No hay práctica clínica posible sin un trabajo sostenido sobre uno/a mism@. 🔸 3. Supervisión: La supervisión es el espacio donde la práctica se piensa, se revisa y se resignifica. Previene el aislamiento profesional, habilita nuevas lecturas y sostiene el deseo de trabajar. Supervisar no es evaluar, sino pensar junt@s la experiencia clínica y profesional.",
+            
+        }
 }
 
 
@@ -82,5 +93,10 @@ export const Servicios_Meta = {
     "asesorias": {
         title: "Asesorías Psicológicas | Sabrina Ramos Lic. en Psicología",
         description: "Asesoramiento psicológico para organizaciones, empresas e instituciones."
+    },
+    "formaciones":
+    {
+        title: "Espacio de Supervisión Clínica y Profesional | Sabrina Ramos Lic. en Psicología ",
+        description: "Supervisión clínica y profesional para psicólog@s y profesionales de la salud mental."
     }
 }

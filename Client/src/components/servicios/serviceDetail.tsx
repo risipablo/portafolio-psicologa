@@ -36,6 +36,10 @@ export const ServiceDetail = () => {
         return srv !== null && typeof srv === 'object' && 'text6b' in srv && 'list2' in srv && !('title2' in srv)
     }
 
+    const isFormacion = (srv: unknown): srv is typeof Servicios_Data['formaciones'] => {
+        return srv !== null && typeof srv === 'object' && 'listTitle' in srv && 'list1' in srv && !('title2' in srv)
+    }
+
     const meta = Servicios_Meta[id as keyof typeof Servicios_Meta]
 
     return (
@@ -229,6 +233,36 @@ export const ServiceDetail = () => {
 
                         {service.text6 && <p className="taller-description taller-highlight">{service.text6}</p>}
                         {service.text7 && <p className="taller-description">{service.text7}</p>}
+                    </>
+                ) : isFormacion(service) ? (
+                    <>
+                        {/* Renderizado específico para Formaciones */}
+                        {service.text1 && <p className="taller-description">{service.text1}</p>}
+                        {service.text2 && <p className="taller-description">{service.text2}</p>}
+                        {service.text3 && <p className="taller-description">{service.text3}</p>}
+                        {service.text4 && <p className="taller-description">{service.text4}</p>}
+                        
+                        {/* Título de los tres pilares */}
+                        {service.listTitle && (
+                            <div className="taller-section">
+                                <h4 className="benefits-title">{service.listTitle}</h4>
+                            </div>
+                        )}
+                        
+                        {/* Lista de los tres pilares */}
+                        {'list1' in service && service.list1 && (
+                            <ul className="taller-list">
+                                {service.list1.split('🔸').filter(Boolean).map((item, idx) => (
+                                    <li key={idx}>
+                                        <span className="list-icon">🔸</span>
+                                        {item.trim()}
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                        
+                        
+                        
                     </>
                 ) : (
                     <>
