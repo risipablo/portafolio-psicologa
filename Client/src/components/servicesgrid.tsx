@@ -28,7 +28,7 @@ export const ServiceGrid = () => {
         {id:3, title:"Psicoterapia Integrativa", image:image6, image2:integr, descrip:'La PSICOTERAPIA INTEGRATIVA tiene influencias de otras terapias, como las humanistas, psicoanalíticas, psicodinámicas, sistemicas, cognitivo- conductuales y holísticas.', route:"/psicoterapia-integrativa"},
         {id:4, title:"Talleres", image:image3, image2:taller2,descrip:"Talleres grupales de bienestar y crecimiento personal. Te invito a conocerlos.", route:"/talleres"},
         {id:5, title:"BioSalud Integrativa", image:image4 ,image2: biodecosalud, descrip:"", route:"/biosalud-integrativa"},
-        {id:6, title:"Formaciones", image:image2, image2:forma, descrip:"Formaciones en psicología y salud mental", route:"/formaciones"},
+        {id:6, title:"Supervisiones", image:image2, image2:forma, descrip:"La supervisión forma parte fundamental del ejercicio profesional", route:"/supervisiones"},
     ];
 
     const handleCardClick = (index: number) => {

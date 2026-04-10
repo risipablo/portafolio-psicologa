@@ -36,7 +36,7 @@ export const ServiceDetail = () => {
         return srv !== null && typeof srv === 'object' && 'text6b' in srv && 'list2' in srv && !('title2' in srv)
     }
 
-    const isFormacion = (srv: unknown): srv is typeof Servicios_Data['formaciones'] => {
+    const isFormacion = (srv: unknown): srv is typeof Servicios_Data['supervisiones'] => {
         return srv !== null && typeof srv === 'object' && 'listTitle' in srv && 'list1' in srv && !('title2' in srv)
     }
 

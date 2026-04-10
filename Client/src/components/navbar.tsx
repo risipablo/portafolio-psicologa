@@ -66,8 +66,8 @@ export const Navbar = () => {
                             <NavLink to="/biosalud-integrativa" onClick={closeMenu} className="submenu-item">
                                 Biosalud Integrativa
                             </NavLink>
-                            <NavLink to="/formaciones" onClick={closeMenu} className="submenu-item">
-                                Formaciones
+                            <NavLink to="/supervisiones" onClick={closeMenu} className="submenu-item">
+                                Supervisiones
                             </NavLink>
                         </div>
                     </div>
