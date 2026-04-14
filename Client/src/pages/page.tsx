@@ -6,7 +6,7 @@ import { ServiceGrid } from "../components/servicesgrid"
 import { FAQ } from "../components/faq"
 import { Consultorio } from "../components/carousel"
 import LocationMap from "../components/locationmap"
-// import { ContactForm } from "../components/contact"
+import { ContactForm } from "../components/contact"
 import Footer from "../components/footer"
 import { ScrollTop } from "../utils/scrolltop"
 import { Whatsapp } from "../utils/whatsapp"
@@ -31,7 +31,7 @@ export const Page = () => {
                         <FAQ/>
                         <Consultorio/>
                         <LocationMap/>
-                        {/* <ContactForm/> */}
+                        <ContactForm/>
                         <Footer/>
                     </>
                 }/>
