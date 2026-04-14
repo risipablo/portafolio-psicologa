@@ -24,7 +24,7 @@ export const Servicios_Data = {
         text1:"Abordaje Integral de Salud y Bienestar",
         text2:"Este programa está diseñado para brindar una mirada completa y profunda del estado de salud física, emocional y de bienestar general. Combina el enfoque clínico-médico con herramientas psicológicas y de salud integrativa, garantizando un acompañamiento profesional, humano y centrado en la persona.",
         title4:"¿En qué consiste?",
-        text3:'la propuesta se desarrolla en dos encuentros. El primero estará a cargo de la Dra. Gisela Stefani, médica con formación en salud integrativa, y el segundo será llevado a cabo por la Lic. Sabrina Ramos, psicóloga especializada en el mismo enfoque. Ambas instancias buscan acompañar a la persona desde una mirada biopsicosocial y orientada al estilo de vida.',
+        text3:'La propuesta se desarrolla en dos encuentros. El primero estará a cargo de la Dra. Gisela Stefani, médica con formación en salud integrativa, y el segundo será llevado a cabo por la Lic. Sabrina Ramos, psicóloga especializada en el mismo enfoque. Ambas instancias buscan acompañar a la persona desde una mirada biopsicosocial y orientada al estilo de vida.',
         title5 :' ¡Que Técnicas te ofrecemos!',
         list1: '🔸Evaluación Integral Inicial. 🔸Bioneuroemocion. 🔸PNL/ PNIE. 🔸Constelaciones Familiares y Asesoramiento Sistémico. 🔸Astrologia Terapéutica.  🔸Psicoterapia Corporal. 🔸Terapia de Geometría Sagrada. 🔸Medicina Natural con Plantas',
         title6: 'Este enfoque incluye: ',

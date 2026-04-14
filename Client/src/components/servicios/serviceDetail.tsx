@@ -3,9 +3,10 @@ import { useEffect } from "react"
 import {Servicios_Data} from "../../data/servicios"
 import { Servicios_Meta } from "../../data/servicios";
 import { motion } from "framer-motion";
-import "../../style/astrologia.css"
+import "../../style/serviceDetail.css"
 import { SliderMaster } from "./slider/sliderMaster";
 import { Helmet } from "react-helmet-async";
+import { PsicoInt } from "./slider/psicoInt";
 
 export const ServiceDetail = () => {
 
@@ -120,6 +121,8 @@ export const ServiceDetail = () => {
 
                         {/* Texto final */}
                         {service.text7 && <p className="taller-description taller-highlight">{service.text7}</p>}
+                    
+                        <PsicoInt/>
                     </>
                 ) : isAsesorias(service) ? (
                     <>

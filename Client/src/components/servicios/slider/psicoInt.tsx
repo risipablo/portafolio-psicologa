@@ -1,10 +1,10 @@
 import { useEffect, useState, useCallback } from "react";
-import { createPortal } from "react-dom"; // Importante para sacar el lightbox del flujo
-import fotos from "../ts/biodeco";
+import { createPortal } from "react-dom"; 
+import fotos from "../ts/psicoInt";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import "../../../style/slider.css";
 
-export const BiodecoSlider = () => {
+export const PsicoInt = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [itemsPerView, setItemsPerview] = useState(1);
     const [selectedImage, setSelectedImage] = useState<number | null>(null);
