@@ -27,7 +27,32 @@ const resend = process.env.RESEND_API_KEY
     ? new Resend(process.env.RESEND_API_KEY)
     : null;
 
-const corsOptions = {
+app.use((req, res, next) => {
+    const allowedOrigins = [
+        'http://localhost:5173',
+        'http://localhost:5174',
+        'http://localhost:3000',
+        'https://sabrina-ramos-psicologa.vercel.app',
+        'https://sabrinaramospsicologa.com',
+        'https://portafolio-psicologa-production.up.railway.app'
+    ];
+    
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin) || process.env.NODE_ENV === 'development') {
+        res.header('Access-Control-Allow-Origin', origin || '*');
+    }
+    
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Accept');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(200);
+    }
+    next();
+});
+
+app.use(cors({
     origin: [
         'http://localhost:5173',
         'http://localhost:5174',
@@ -40,22 +65,8 @@ const corsOptions = {
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
     credentials: true,
     optionsSuccessStatus: 200
-};
+}));
 
-// Middleware CORS manual (más permisivo)
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Accept');
-    res.header('Access-Control-Allow-Credentials', 'true');
-    
-    if (req.method === 'OPTIONS') {
-        return res.sendStatus(200);
-    }
-    next();
-});
-
-app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
@@ -224,6 +235,21 @@ const server = app.listen(PORT, '0.0.0.0', () => {
 });
 
 server.on('error', (err) => {
-    console.error('❌ ERROR EN EL SERVIDOR:', err);
+    console.error('ERROR EN EL SERVIDOR:', err);
 });
 
+process.on('SIGTERM', () => {
+    console.log('Recibido SIGTERM, cerrando servidor graceful...');
+    server.close(() => {
+        console.log('Servidor cerrado correctamente');
+        process.exit(0);
+    });
+});
+
+process.on('SIGINT', () => {
+    console.log('Recibido SIGINT, cerrando servidor...');
+    server.close(() => {
+        console.log('Servidor cerrado correctamente');
+        process.exit(0);
+    });
+});
