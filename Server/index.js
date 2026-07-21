@@ -197,7 +197,7 @@ app.post('/send-email', async (req, res) => {
     }
 });
 
-const PORT = process.env.PORT || 3001;
+const PORT = 8080;
 const server = app.listen(PORT, '0.0.0.0', () => {
     console.log('Servidor corriendo en Railway en el puerto ' + PORT);
     console.log('Emails se enviaran a: ' + (process.env.EMAIL_USER || 'NO DEFINIDO'));
@@ -214,7 +214,3 @@ server.on('error', (err) => {
     console.error('❌ ERROR EN EL SERVIDOR:', err);
 });
 
-// Keep-alive para Railway
-setInterval(() => {
-    console.log('🔄 Keep-alive ping');
-}, 30000);
