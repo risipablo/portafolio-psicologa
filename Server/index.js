@@ -41,7 +41,7 @@ const corsOptions = {
         'http://localhost:3000',
         'https://sabrina-ramos-psicologa.vercel.app',
         'https://sabrinaramospsicologa.com',
-        'https://portafolio-psicologa-production.up.railway.app' // ← TU BACKEND EN RAILWAY
+        'https://portafolio-psicologa-production.up.railway.app'
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
