@@ -15,7 +15,7 @@ if (!process.env.RESEND_API_KEY || !process.env.EMAIL_USER) {
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const corsOptions = {
-    origin: ['http://localhost:5173', 'https://sabrina-ramos-psicologa.vercel.app', 'https://portafolio-psicologa.onrender.com', 'https://sabrinaramospsicologa.com', 'https://sabrinaramospsicologa.com'],
+    origin: ['http://localhost:5173', 'https://sabrina-ramos-psicologa.vercel.app',  'https://sabrinaramospsicologa.com','https://portafolio-psicologa-production.up.railway.app'],
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true

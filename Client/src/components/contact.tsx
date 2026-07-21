@@ -6,7 +6,7 @@ import { toast } from 'react-hot-toast';
 import type { IContact } from '../interface/type';
 import "../style/contac.css"
 
-const serverFront = "portafolio-psicologa-production.up.railway.app"
+const serverFront = "https://portafolio-psicologa-production.up.railway.app/"
 
 
 const api = axios.create({
