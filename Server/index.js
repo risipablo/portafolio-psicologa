@@ -3,37 +3,30 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
 
 const app = express();
 
-
-console.log('🔍 DIAGNÓSTICO RAILWAY:');
-console.log('📧 EMAIL_USER:', process.env.EMAIL_USER || 'NO DEFINIDO');
-console.log('🔑 RESEND_API_KEY:', process.env.RESEND_API_KEY ? '✅ Definida' : '❌ NO DEFINIDA');
-console.log('🌍 NODE_ENV:', process.env.NODE_ENV || 'development');
-console.log('🚀 PORT:', process.env.PORT || '3001');
-
+console.log('DIAGNOSTICO RAILWAY:');
+console.log('EMAIL_USER:', process.env.EMAIL_USER || 'NO DEFINIDO');
+console.log('RESEND_API_KEY:', process.env.RESEND_API_KEY ? 'DEFINIDA' : 'NO DEFINIDA');
+console.log('NODE_ENV:', process.env.NODE_ENV || 'development');
+console.log('PORT:', process.env.PORT || '3001');
 
 if (!process.env.RESEND_API_KEY) {
-    console.error('❌ ERROR: RESEND_API_KEY no está definida en Railway');
-    console.error('💡 Agrega la variable en el panel de Railway > Variables');
+    console.error('ERROR: RESEND_API_KEY no esta definida en Railway');
 }
 
 if (!process.env.EMAIL_USER) {
-    console.error('❌ ERROR: EMAIL_USER no está definido en Railway');
-    console.error('💡 Agrega la variable en el panel de Railway > Variables');
+    console.error('ERROR: EMAIL_USER no esta definido en Railway');
 }
 
-// Inicializar Resend
 const resend = process.env.RESEND_API_KEY 
     ? new Resend(process.env.RESEND_API_KEY)
     : null;
 
-// ===== CORS CORREGIDO =====
 const corsOptions = {
     origin: [
         'http://localhost:5173',
@@ -52,7 +45,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
-// ===== RUTAS =====
 app.get('/', (req, res) => {
     res.json({ 
         status: 'ok', 
@@ -72,28 +64,27 @@ app.get('/health', (req, res) => {
     });
 });
 
-// Ruta de prueba
 app.get('/test-api-key', (req, res) => {
     const hasKey = !!process.env.RESEND_API_KEY;
     res.json({
         success: hasKey,
-        message: hasKey ? '✅ API Key configurada correctamente' : '❌ API Key NO configurada',
+        message: hasKey ? 'API Key configurada correctamente' : 'API Key NO configurada',
         apiKeyLength: process.env.RESEND_API_KEY?.length || 0,
         emailUser: process.env.EMAIL_USER || 'NO DEFINIDO',
         apiKeyPrefix: process.env.RESEND_API_KEY?.substring(0, 8) + '...'
     });
 });
 
-// ===== ENDPOINT PRINCIPAL =====
 app.post('/send-email', async (req, res) => {
-    console.log('📨 Petición recibida en /send-email');
-    console.log('📦 Body:', req.body);
-    console.log('🌐 Origin:', req.headers.origin);
+    console.log('PETICION RECIBIDA EN /send-email');
+    console.log('BODY:', JSON.stringify(req.body, null, 2));
+    console.log('ORIGIN:', req.headers.origin);
+    console.log('EMAIL_USER configurado:', process.env.EMAIL_USER);
+    console.log('RESEND_API_KEY configurada:', !!process.env.RESEND_API_KEY);
     
     try {
-        // Verificar que Resend esté inicializado
         if (!resend) {
-            console.error('❌ Resend no inicializado');
+            console.error('ERROR CRITICO: Resend no inicializado');
             return res.status(500).json({ 
                 error: 'Servicio de email no disponible',
                 details: 'API Key no configurada en Railway'
@@ -102,15 +93,20 @@ app.post('/send-email', async (req, res) => {
 
         const { name, lastname, email, message, cellphone } = req.body;
 
-        // Validar campos requeridos
+        console.log('CAMPOS RECIBIDOS:', { name, lastname, email, cellphone, messageLength: message?.length });
+
         if (!name || !lastname || !email || !message || !cellphone) {
-            console.log('❌ Faltan campos requeridos');
+            console.log('VALIDACION FALLIDA: Faltan campos requeridos');
             return res.status(400).json({ 
                 error: 'Todos los campos son requeridos: name, lastname, email, message, cellphone' 
             });
         }
 
-        console.log('📧 Enviando email con Resend...');
+        console.log('INTENTANDO ENVIAR EMAIL CON RESEND');
+        console.log('FROM: Portfolio Contact <onboarding@resend.dev>');
+        console.log('TO:', process.env.EMAIL_USER);
+        console.log('REPLY_TO:', email);
+        console.log('SUBJECT:', `Nuevo contacto: ${name} ${lastname}`);
 
         const { data, error } = await resend.emails.send({
             from: 'Portfolio Contact <onboarding@resend.dev>',
@@ -124,7 +120,7 @@ app.post('/send-email', async (req, res) => {
                     </div>
                     
                     <div style="padding: 20px; background: #f8f9fa;">
-                        <h3 style="color: #333;">📋 Información del contacto</h3>
+                        <h3 style="color: #333;">Informacion del contacto</h3>
                         <table style="width: 100%; background: white; padding: 15px; border-radius: 5px;">
                             <tr>
                                 <td style="padding: 8px; font-weight: bold;">Nombre:</td>
@@ -143,14 +139,14 @@ app.post('/send-email', async (req, res) => {
                                 <td style="padding: 8px;">${cellphone || 'No proporcionado'}</td>
                             </tr>
                             <tr>
-                                <td style="padding: 8px; font-weight: bold;">📅 Fecha:</td>
+                                <td style="padding: 8px; font-weight: bold;">Fecha:</td>
                                 <td style="padding: 8px;">${new Date().toLocaleString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires' })}</td>
                             </tr>
                         </table>
                     </div>
                     
                     <div style="padding: 20px;">
-                        <h3 style="color: #333;">💬 Mensaje</h3>
+                        <h3 style="color: #333;">Mensaje</h3>
                         <div style="background: white; padding: 15px; border-left: 4px solid #667eea; border-radius: 3px;">
                             <p style="margin: 0; line-height: 1.6; white-space: pre-wrap;">${message}</p>
                         </div>
@@ -167,17 +163,19 @@ app.post('/send-email', async (req, res) => {
         });
 
         if (error) {
-            console.error('❌ Error de Resend:', JSON.stringify(error, null, 2));
+            console.error('ERROR DE RESEND:', JSON.stringify(error, null, 2));
+            console.error('CODIGO DE ERROR:', error.statusCode);
+            console.error('MENSAJE DE ERROR:', error.message);
             
             if (error.statusCode === 422) {
                 return res.status(400).json({ 
-                    error: 'Error de validación: Verifica el dominio',
+                    error: 'Error de validacion: Verifica el dominio',
                     details: error.message 
                 });
             }
             if (error.statusCode === 403) {
                 return res.status(403).json({ 
-                    error: 'Error de autenticación: API Key inválida',
+                    error: 'Error de autenticacion: API Key invalida',
                     details: error.message 
                 });
             }
@@ -188,15 +186,17 @@ app.post('/send-email', async (req, res) => {
             });
         }
 
-        console.log('✅ Email enviado exitosamente:', data);
+        console.log('EMAIL ENVIADO EXITOSAMENTE');
+        console.log('RESPUESTA DE RESEND:', JSON.stringify(data, null, 2));
         
         res.status(200).json({ 
-            message: 'Correo enviado con éxito',
+            message: 'Correo enviado con exito',
             messageId: data.id 
         });
 
     } catch (error) {
-        console.error('❌ Error en /send-email:', error);
+        console.error('ERROR EN /send-email:', error);
+        console.error('STACK TRACE:', error.stack);
         res.status(500).json({ 
             error: 'Error al enviar el correo',
             details: error.message 
@@ -206,8 +206,8 @@ app.post('/send-email', async (req, res) => {
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-    console.log(`🚀 Servidor corriendo en Railway en el puerto ${PORT}`);
-    console.log(`📧 Emails se enviarán a: ${process.env.EMAIL_USER || 'NO DEFINIDO'}`);
-    console.log(`📤 Desde: contacto@sabrinaramospsicologa.com`);
-    console.log(`🔗 Test API Key: https://portafolio-psicologa-production.up.railway.app/test-api-key`);
+    console.log('Servidor corriendo en Railway en el puerto ' + PORT);
+    console.log('Emails se enviaran a: ' + (process.env.EMAIL_USER || 'NO DEFINIDO'));
+    console.log('Desde: onboarding@resend.dev');
+    console.log('Test API Key: https://portafolio-psicologa-production.up.railway.app/test-api-key');
 });

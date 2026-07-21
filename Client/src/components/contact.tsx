@@ -5,12 +5,13 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import type { IContact } from '../interface/type';
 import "../style/contac.css"
+import {config} from "../config/index"
 
-const serverFront = "https://portafolio-psicologa-production.up.railway.app/"
+const API_URL = config.Api;
 
 
 const api = axios.create({
-  baseURL: serverFront,
+  baseURL: API_URL,
   timeout:3000,
   headers: {
     'Content-Type': 'application/json'
