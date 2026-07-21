@@ -34,14 +34,13 @@ const corsOptions = {
         'http://localhost:3000',
         'https://sabrina-ramos-psicologa.vercel.app',
         'https://sabrinaramospsicologa.com',
-        'https://www.sabrinaramospsicologa.com',
-        'https://portafolio-psicologa-production.up.railway.app/'
+        'https://portafolio-psicologa-production.up.railway.app'
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
     credentials: true,
     optionsSuccessStatus: 200
-}
+};
 
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
@@ -80,8 +79,6 @@ app.post('/send-email', async (req, res) => {
     console.log('PETICION RECIBIDA EN /send-email');
     console.log('BODY:', JSON.stringify(req.body, null, 2));
     console.log('ORIGIN:', req.headers.origin);
-    console.log('EMAIL_USER configurado:', process.env.EMAIL_USER);
-    console.log('RESEND_API_KEY configurada:', !!process.env.RESEND_API_KEY);
     
     try {
         if (!resend) {
@@ -94,8 +91,6 @@ app.post('/send-email', async (req, res) => {
 
         const { name, lastname, email, message, cellphone } = req.body;
 
-        console.log('CAMPOS RECIBIDOS:', { name, lastname, email, cellphone, messageLength: message?.length });
-
         if (!name || !lastname || !email || !message || !cellphone) {
             console.log('VALIDACION FALLIDA: Faltan campos requeridos');
             return res.status(400).json({ 
@@ -107,7 +102,6 @@ app.post('/send-email', async (req, res) => {
         console.log('FROM: Portfolio Contact <onboarding@resend.dev>');
         console.log('TO:', process.env.EMAIL_USER);
         console.log('REPLY_TO:', email);
-        console.log('SUBJECT:', `Nuevo contacto: ${name} ${lastname}`);
 
         const { data, error } = await resend.emails.send({
             from: 'Portfolio Contact <onboarding@resend.dev>',
@@ -165,8 +159,6 @@ app.post('/send-email', async (req, res) => {
 
         if (error) {
             console.error('ERROR DE RESEND:', JSON.stringify(error, null, 2));
-            console.error('CODIGO DE ERROR:', error.statusCode);
-            console.error('MENSAJE DE ERROR:', error.message);
             
             if (error.statusCode === 422) {
                 return res.status(400).json({ 
@@ -205,16 +197,24 @@ app.post('/send-email', async (req, res) => {
     }
 });
 
-
-console.log('✅ RUTAS REGISTRADAS:');
-console.log('  - GET /');
-console.log('  - GET /health');
-console.log('  - GET /test-api-key');
-console.log('  - POST /send-email');
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
+const server = app.listen(PORT, '0.0.0.0', () => {
     console.log('Servidor corriendo en Railway en el puerto ' + PORT);
     console.log('Emails se enviaran a: ' + (process.env.EMAIL_USER || 'NO DEFINIDO'));
     console.log('Desde: onboarding@resend.dev');
     console.log('Test API Key: https://portafolio-psicologa-production.up.railway.app/test-api-key');
+    console.log('✅ RUTAS REGISTRADAS:');
+    console.log('  - GET /');
+    console.log('  - GET /health');
+    console.log('  - GET /test-api-key');
+    console.log('  - POST /send-email');
 });
+
+server.on('error', (err) => {
+    console.error('❌ ERROR EN EL SERVIDOR:', err);
+});
+
+// Keep-alive para Railway
+setInterval(() => {
+    console.log('🔄 Keep-alive ping');
+}, 30000);
