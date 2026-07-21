@@ -205,6 +205,12 @@ app.post('/send-email', async (req, res) => {
     }
 });
 
+
+console.log('✅ RUTAS REGISTRADAS:');
+console.log('  - GET /');
+console.log('  - GET /health');
+console.log('  - GET /test-api-key');
+console.log('  - POST /send-email');
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log('Servidor corriendo en Railway en el puerto ' + PORT);
