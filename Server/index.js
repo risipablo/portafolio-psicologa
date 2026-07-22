@@ -27,46 +27,42 @@ const resend = process.env.RESEND_API_KEY
     ? new Resend(process.env.RESEND_API_KEY)
     : null;
 
-app.use((req, res, next) => {
-    const allowedOrigins = [
-        'http://localhost:5173',
-        'http://localhost:5174',
-        'http://localhost:3000',
-        'https://sabrina-ramos-psicologa.vercel.app',
-        'https://sabrinaramospsicologa.com',
-        'https://portafolio-psicologa-production.up.railway.app'
-    ];
-    
-    const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin) || process.env.NODE_ENV === 'development') {
-        res.header('Access-Control-Allow-Origin', origin || '*');
-    }
-    
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Accept');
-    res.header('Access-Control-Allow-Credentials', 'true');
-    
-    if (req.method === 'OPTIONS') {
-        return res.sendStatus(200);
-    }
-    next();
-});
-
-app.use(cors({
-    origin: [
-        'http://localhost:5173',
-        'http://localhost:5174',
-        'http://localhost:3000',
-        'https://sabrina-ramos-psicologa.vercel.app',
-        'https://sabrinaramospsicologa.com',
-        'https://portafolio-psicologa-production.up.railway.app'
-    ],
+// CORS configuration - UN SOLO MIDDLEWARE
+const corsOptions = {
+    origin: function (origin, callback) {
+        const allowedOrigins = [
+            'http://localhost:5173',
+            'http://localhost:5174',
+            'http://localhost:3000',
+            'https://sabrina-ramos-psicologa.vercel.app',
+            'https://sabrinaramospsicologa.com',
+            'https://portafolio-psicologa-production.up.railway.app'
+        ];
+        
+        // Permitir peticiones sin origen (Postman, etc.)
+        if (!origin) {
+            return callback(null, true);
+        }
+        
+        // Permitir cualquier subdominio de vercel.app
+        if (origin.match(/\.vercel\.app$/)) {
+            return callback(null, true);
+        }
+        
+        if (allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            console.log('ORIGEN BLOQUEADO POR CORS:', origin);
+            callback(new Error('Origen no permitido por CORS'));
+        }
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
     credentials: true,
     optionsSuccessStatus: 200
-}));
+};
 
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
