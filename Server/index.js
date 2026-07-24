@@ -36,6 +36,7 @@ const corsOptions = {
             'http://localhost:3000',
             'https://sabrina-ramos-psicologa.vercel.app',
             'https://sabrinaramospsicologa.com',
+            'https://www.sabrinaramospsicologa.com',
             'https://portafolio-psicologa-production.up.railway.app'
         ];
         
